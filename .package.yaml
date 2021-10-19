@@ -1,0 +1,58 @@
+author: Nuno Aguiar, Andreia Brizida, Jose Alves, Leandro Fernandes
+scripts:
+  preerase: ''
+  posterase: ''
+  preinstall: ''
+  postinstall: ''
+keywords:
+- raid
+- s3
+- nattrmon
+bugs:
+  url: https://github.com/OpenAF/nAttrMon-configs/issues
+repository:
+  type: http
+  url: https://openaf.io/opacks/nAttrMon.opack
+description: Config packages for nAttrMon
+name: nAttrMon
+main: ''
+mainJob: ''
+license: Apache 2.0 license
+version: '20211019'
+dependencies:
+  openaf: '>=20210721'
+files:
+- README.md
+- utils/createConfig.yaml
+- RAID/objects/nInput_BPMDebugChecks.js
+- RAID/objects/nInput_CBPMSemaphores.js
+- RAID/objects/nInput_DMPerformance.js
+- RAID/objects/nInput_RAIDGCMemory.js
+- RAID/objects/nInput_CBPMRunningFlows.js
+- RAID/objects/nInput_RAIDMemory.js
+- RAID/objects/nInput_BPMNRunningFlows.js
+- RAID/objects/nInput_Schedulers.js
+- RAID/objects/nInput_RAIDLookups.js
+- RAID/objects/nInput_AFPing.js
+- RAID/objects/nInput_RAIDStatus_DB.js
+- RAID/objects/nInput_CBPMDebugChecks.js
+- RAID/objects/nInput_Semaphores.js
+- LICENSE
+- .package.yaml
+filesHash:
+  README.md: d39ac664fdea882cf3bcb89570768aeba3a86891
+  utils/createConfig.yaml: bd43f2ca42c3e40a9bdee1c4b953fc015d0234d7
+  RAID/objects/nInput_BPMDebugChecks.js: 6e1042ba95cc3374d3516be2202538529344769f
+  RAID/objects/nInput_CBPMSemaphores.js: 75a0892cdad21aee8762d6d1346548bf6d42b59b
+  RAID/objects/nInput_DMPerformance.js: 3d0f27b87f5b1a004e32559b0076c3cbfdf5d064
+  RAID/objects/nInput_RAIDGCMemory.js: 61db6bc880acfd8ce0845b2a604f403bc3f26730
+  RAID/objects/nInput_CBPMRunningFlows.js: 54156f08ebcd272a24ae0b7d8c135f5d582dd195
+  RAID/objects/nInput_RAIDMemory.js: 5b941a58ef1b523d3f5825435ecfb72dabb7143c
+  RAID/objects/nInput_BPMNRunningFlows.js: 86da2d78b524d42ac4ab9598820605bbbfb24c57
+  RAID/objects/nInput_Schedulers.js: 96771d166e2574b6d5a526cc6025ad3abf1363d4
+  RAID/objects/nInput_RAIDLookups.js: 1544374c0bec3e6c53eb60c1efe578f4b8f101ae
+  RAID/objects/nInput_AFPing.js: c88598e75deb073715ed011272ae7ffb46962e8e
+  RAID/objects/nInput_RAIDStatus_DB.js: a59c7b62281341e3b0a3e279ff12eaaa85b43eac
+  RAID/objects/nInput_CBPMDebugChecks.js: 737f33ddd852309d0322f57e7adeeb307627652f
+  RAID/objects/nInput_Semaphores.js: 9b0c0d8ca1b1c33d8faeaae89738360c8569534e
+  LICENSE: 7df059597099bb7dcf25d2a9aedfaf4465f72d8d
