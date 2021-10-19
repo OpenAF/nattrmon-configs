@@ -1,0 +1,107 @@
+# Author: Nuno Aguiar
+init:
+  help: &HELP
+    text   : Creates a nAttrMon empty config folder
+    expects: 
+    - name   : path
+      desc   : The path where to create the empty config folder (defaults to ".")
+
+todo:
+- Create config folder
+- Copy base objects.assets
+- Copy base configs
+#- Copy output httpAll
+
+ojob:
+  opacks      :
+  - openaf  : 20210515
+  - nAttrMon: 20210714
+  catch       : "ow.oJob.output({ Help: args.init.help }, args); logErr(exception);"
+  logToConsole: true   # to change when finished
+        
+
+jobs:
+# ----------
+- name: Help
+  help: *HELP
+
+# --------------------------
+- name: Create config folder
+  exec: |
+    args.path = _$(args.path, "path").$_();
+
+    // Make sure it exists
+    io.mkdir(args.path)
+    io.mkdir(args.path + "/inputs")
+    io.mkdir(args.path + "/inputs.disabled")
+    io.mkdir(args.path + "/outputs")
+    io.mkdir(args.path + "/outputs.disabled")
+    io.mkdir(args.path + "/validations")
+    io.mkdir(args.path + "/validations.disabled")
+    io.mkdir(args.path + "/objects")
+
+# ------------------------------
+- name: Copy base objects.assets
+  exec: |
+    if (toBoolean(args.withAssets)) {
+      ow.loadFormat();
+      var packPath = ow.format.string.separatorsToUnix(getOPackPath("nAttrMon"));
+      listFilesRecursive(packPath + "/config/objects.assets")
+      .forEach(file => {
+        var target = args.path + "/" + file.filepath.replace(packPath + "/config", "");
+        if (file.isDirectory) 
+          io.mkdir(target)
+        else
+          io.cp(file.filepath, target)
+      });
+    }
+
+# ------------------------
+- name: Copy a base config
+  exec: |
+    _$(args.p, "p").$_();
+
+    [ "inputs", "inputs.disabled", "outputs", "outputs.disabled", "objects", "validations", "validations.disabled" ].forEach(sf => {
+      listFilesRecursive(args.p + "/" + sf).forEach(file => {
+        try {
+          var target = args.path + "/" + file.filepath.replace(args.p + "/", "");
+
+          if (file.isFile &&
+              (file.filename.endsWith(".yaml") || 
+              file.filename.endsWith(".yml") || 
+              file.filename.endsWith(".js")) ) {
+            io.cp(file.canonicalPath, target);
+          }
+
+          if (file.isDirectory) io.mkdir(target);
+        } catch(e) {
+          logErr(e);
+        }
+      });
+    });
+
+# -----------------------
+- name: Copy base configs
+  each: Copy a base config
+  exec: |
+    args.path = _$(args.path, "path").$_();
+
+    if (isString(args.bases)) {
+      args.bases.split("+").forEach(base => {
+        if (io.fileExists(base)) {
+          log(" copying base '" + base + "'...");
+          each({ p: base, path: args.path });
+        } else {
+          logWarn(" '" + base + "' not found!");
+        }
+      });
+    }
+
+# -------------------------
+- name: Copy output httpAll
+  exec: |
+    args.path = _$(args.path, "path").$_();
+
+    ow.loadFormat();
+    var packPath = ow.format.string.separatorsToUnix(getOPackPath("nAttrMon"));
+    io.cp(packPath + "/config/outputs.disabled/yaml/00.httpAll.yaml", args.path + "/outputs/00.httpAll.yaml");
