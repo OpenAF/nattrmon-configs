@@ -61,7 +61,7 @@
        logErr("Error while retrieving status report using '" + aKey + "': " + e.message);
     }
  
-    ret = merge(obj, { Name: aKey });
+    ret = merge({ Name: aKey }, obj);
  
     return ret;
  }

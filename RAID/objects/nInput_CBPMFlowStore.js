@@ -38,11 +38,11 @@ nInput_CBPMFlowStore.prototype.__get = function (aKey, aExtra) {
       if (isBoolean(parent.useCache)) {
          var res = $cache("nattrmon::" + aKey).get({ op: "StatusReport", args: {} });
          if (isMap(res) && isDef(res.__error)) throw res.__error;
-         obj = res.Services["wedo.cbpm.services.flowstore.FlowStoreBase"]["CBPM.FlowStore"];
+         obj = res;
       } else {
          nattrmon.useObject(aKey, function (s) {
             try {
-               obj = s.exec("StatusReport", {}).Services["wedo.cbpm.services.flowstore.FlowStoreBase"]["CBPM.FlowStore"];
+               obj = s.exec("StatusReport", {});
             } catch (e) {
                logErr("Error while retrieving status report using '" + aKey + "': " + e.message);
                throw e;
@@ -63,7 +63,7 @@ nInput_CBPMFlowStore.prototype.__get = function (aKey, aExtra) {
       logErr("Error while retrieving status report using '" + aKey + "': " + e.message);
    }
 
-   ret = merge(obj, { Name: aKey });
+   ret = merge({ Key: aKey }, obj);
 
    return ret;
 }
