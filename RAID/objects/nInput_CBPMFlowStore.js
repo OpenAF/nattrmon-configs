@@ -55,6 +55,7 @@ nInput_CBPMFlowStore.prototype.__get = function (aKey, aExtra) {
           isDef(obj.Services["wedo.cbpm.services.flowstore.FlowStoreBase"]["CBPM.FlowStore"])) {
             obj = obj.Services["wedo.cbpm.services.flowstore.FlowStoreBase"]["CBPM.FlowStore"];
             traverse(obj, (aK, aV, aP, aO) => { if (aK == "ClassName") delete aO[aK] });
+            obj = ow.obj.flatMap(obj);
       } else {
          obj = {};
       }
