@@ -1,6 +1,6 @@
 /**
  * <odoc>
- * <key>nattrmon.nInput_RAIDQueryManager(aMap) : nInput</key>
+ * <key>nattrmon.nInput_WELCache(aMap) : nInput</key>
  * aMap is composed of:\
  *  - keys (a key string or an array of keys for an AF object)\
  *  - chKeys (a channel name for the keys of AF objects)\
@@ -9,7 +9,7 @@
  * \
  * </odoc>
  */
- var nInput_RAIDQueryManager = function (aMap, attributePrefix) {
+ var nInput_WELCache = function (aMap, attributePrefix) {
     if (isUnDef(getOPackPath("OpenCli"))) {
        throw "OpenCli opack not installed.";
     }
@@ -21,14 +21,14 @@
           this.params.keys = [this.params.keys];
        } 
  
-       if (isUnDef(this.params.attrTemplate)) this.params.attrTemplate = "RAID/Query Manager";
+       if (isUnDef(this.params.attrTemplate)) this.params.attrTemplate = "RAID/WEL Cache";
     } 
      
     nInput.call(this, this.input);
  }
- inherit(nInput_RAIDQueryManager, nInput);
+ inherit(nInput_WELCache, nInput);
  
- nInput_RAIDQueryManager.prototype.__get = function (aKey, aExtra) {
+ nInput_WELCache.prototype.__get = function (aKey, aExtra) {
     var ret = {};
  
     try {
@@ -51,11 +51,10 @@
        }
  
        if (isDef(obj.Services) &&
-           isDef(obj.Services["wedo.datamodel.generator.services.QueryGeneratorManager"]) &&
-           isDef(obj.Services["wedo.datamodel.generator.services.QueryGeneratorManager"]["DM.QueryGeneratorManager"])) {
-             obj = obj.Services["wedo.datamodel.generator.services.QueryGeneratorManager"]["DM.QueryGeneratorManager"];
-             traverse(obj, (aK, aV, aP, aO) => { if (aK == "ClassName") delete aO[aK] });
-             obj = ow.obj.flatMap(obj);
+           isDef(obj.Services["wedo.jaf.services.expression.ExpressionEngineFactoryBase"]) &&
+           isDef(obj.Services["wedo.jaf.services.expression.ExpressionEngineFactoryBase"]["AF.ExpressionEngineFactory"])) {
+             obj = obj.Services["wedo.jaf.services.expression.ExpressionEngineFactoryBase"]["AF.ExpressionEngineFactory"];
+             if (isDef(obj.WELParserCache)) obj = obj.WELParserCache; else obj = __;
        } else {
           obj = {};
        }
@@ -68,7 +67,7 @@
     return ret;
  }
  
- nInput_RAIDQueryManager.prototype.input = function (scope, args) {
+ nInput_WELCache.prototype.input = function (scope, args) {
     var res = {};
     var arr = [];
  

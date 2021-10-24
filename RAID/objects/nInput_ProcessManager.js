@@ -56,8 +56,9 @@ nInput_ProcessManager.prototype.__get = function (aKey, aExtra) {
             obj = obj.Services["wedo.jaf.services.process.ProcessManagerBase"].ProcessStatusManager.ProcessReport;
 
             obj = obj.map(r => {
-                if (isDef(r.StartDate)) r.StartDate = ow.format.fromWeDoDateToDate(r.StartDate);
-                if (isDef(r.EndDate))   r.EndDate   = ow.format.fromWeDoDateToDate(r.EndDate);
+                traverse(r, (aK, aV, aP, aO) => { if (isMap(aV) && isDef(aV["__wedo__type__"])) aO[aK] = ow.format.fromWeDoDateToDate(aV) })
+                //if (isDef(r.StartDate)) r.StartDate = ow.format.fromWeDoDateToDate(r.StartDate);
+                //if (isDef(r.EndDate))   r.EndDate   = ow.format.fromWeDoDateToDate(r.EndDate);
                 if (isDef(r.Threads)) {
                     r.numThreads = r.Threads.length;
                     delete r.Threads;
@@ -67,6 +68,8 @@ nInput_ProcessManager.prototype.__get = function (aKey, aExtra) {
 
                 return r;
             });
+        } else {
+            obj = {};
         }
 
     } catch (e) {

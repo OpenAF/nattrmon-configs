@@ -1,6 +1,6 @@
 /**
  * <odoc>
- * <key>nattrmon.nInput_CBPMFlowStore(aMap) : nInput</key>
+ * <key>nattrmon.nInput_CBPMFlowManager(aMap) : nInput</key>
  * aMap is composed of:\
  *  - keys (a key string or an array of keys for an AF object)\
  *  - chKeys (a channel name for the keys of AF objects)\
@@ -9,7 +9,7 @@
  * \
  * </odoc>
  */
-var nInput_CBPMFlowStore = function (aMap, attributePrefix) {
+var nInput_CBPMFlowManager = function (aMap, attributePrefix) {
    if (isUnDef(getOPackPath("OpenCli"))) {
       throw "OpenCli opack not installed.";
    }
@@ -21,14 +21,14 @@ var nInput_CBPMFlowStore = function (aMap, attributePrefix) {
          this.params.keys = [this.params.keys];
       } 
 
-      if (isUnDef(this.params.attrTemplate)) this.params.attrTemplate = "RAID/CBPM Flow Store";
+      if (isUnDef(this.params.attrTemplate)) this.params.attrTemplate = "RAID/CBPM Flow Manager";
    } 
     
    nInput.call(this, this.input);
 }
-inherit(nInput_CBPMFlowStore, nInput);
+inherit(nInput_CBPMFlowManager, nInput);
 
-nInput_CBPMFlowStore.prototype.__get = function (aKey, aExtra) {
+nInput_CBPMFlowManager.prototype.__get = function (aKey, aExtra) {
    var ret = {};
 
    try {
@@ -51,10 +51,12 @@ nInput_CBPMFlowStore.prototype.__get = function (aKey, aExtra) {
       }
 
       if (isDef(obj.Services) &&
-          isDef(obj.Services["wedo.cbpm.services.flowstore.FlowStoreBase"]) &&
-          isDef(obj.Services["wedo.cbpm.services.flowstore.FlowStoreBase"]["CBPM.FlowStore"])) {
-            obj = obj.Services["wedo.cbpm.services.flowstore.FlowStoreBase"]["CBPM.FlowStore"];
+          isDef(obj.Services["wedo.cbpm.services.flow.FlowManager"]) &&
+          isDef(obj.Services["wedo.cbpm.services.flow.FlowManager"]["CBPM.FlowManager"])) {
+            obj = obj.Services["wedo.cbpm.services.flow.FlowManager"]["CBPM.FlowManager"];
+            delete obj.RunningFlows;
             traverse(obj, (aK, aV, aP, aO) => { if (aK == "ClassName") delete aO[aK] });
+            obj = ow.obj.flatMap(obj);
       } else {
          obj = {};
       }
@@ -68,7 +70,7 @@ nInput_CBPMFlowStore.prototype.__get = function (aKey, aExtra) {
    return ret;
 }
 
-nInput_CBPMFlowStore.prototype.input = function (scope, args) {
+nInput_CBPMFlowManager.prototype.input = function (scope, args) {
    var res = {};
    var arr = [];
 

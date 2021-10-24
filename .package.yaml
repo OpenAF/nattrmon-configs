@@ -18,7 +18,7 @@ name: nAttrMon
 main: ''
 mainJob: ''
 license: Apache 2.0 license
-version: '20211022'
+version: '20211023'
 dependencies:
   openaf: '>=20210721'
 files:
@@ -26,9 +26,12 @@ files:
 - .package.yaml
 - nAttrMon/objects/nInput_nAttrMon.js
 - utils/createConfig.yaml
+- RAID/objects/nInput_WELCache.js
 - RAID/objects/nInput_BPMDebugChecks.js
 - RAID/objects/nInput_ProcessManager.js
 - RAID/objects/nInput_CBPMSemaphores.js
+- RAID/objects/nInput_CBPMFlowManager.js
+- RAID/objects/nInput_RAIDSQLs.js
 - RAID/objects/nInput_RAIDQueryManager.js
 - RAID/objects/nInput_DMPerformance.js
 - RAID/objects/nInput_RAIDGCMemory.js
@@ -47,16 +50,19 @@ filesHash:
   README.md: d39ac664fdea882cf3bcb89570768aeba3a86891
   nAttrMon/objects/nInput_nAttrMon.js: c8ec9f45f724e7372b02751b893178490587641b
   utils/createConfig.yaml: bd43f2ca42c3e40a9bdee1c4b953fc015d0234d7
+  RAID/objects/nInput_WELCache.js: d20e0fdc2d08f6273e25cc8a8b513be41f7207cd
   RAID/objects/nInput_BPMDebugChecks.js: 6e1042ba95cc3374d3516be2202538529344769f
-  RAID/objects/nInput_ProcessManager.js: c18f1d55ee1460d57143d6595c8cc503ceeebec2
+  RAID/objects/nInput_ProcessManager.js: d1e3a3bfe34af52ff05ba623742dfd3979bf2484
   RAID/objects/nInput_CBPMSemaphores.js: 75a0892cdad21aee8762d6d1346548bf6d42b59b
-  RAID/objects/nInput_RAIDQueryManager.js: 4eb3991c5f1ea77a01414895765b470ba037a5af
+  RAID/objects/nInput_CBPMFlowManager.js: 5128f64828ee2f9296376931a7a8dae80ff74aed
+  RAID/objects/nInput_RAIDSQLs.js: 370e0fb53d8255c755bc3f7a8b8f9c082ad6c9bb
+  RAID/objects/nInput_RAIDQueryManager.js: e17fad0c68b57f547544ba3b67c053bb3fa21bf9
   RAID/objects/nInput_DMPerformance.js: 3d0f27b87f5b1a004e32559b0076c3cbfdf5d064
   RAID/objects/nInput_RAIDGCMemory.js: 61db6bc880acfd8ce0845b2a604f403bc3f26730
   RAID/objects/nInput_CBPMRunningFlows.js: 54156f08ebcd272a24ae0b7d8c135f5d582dd195
   RAID/objects/nInput_RAIDMemory.js: 5b941a58ef1b523d3f5825435ecfb72dabb7143c
   RAID/objects/nInput_BPMNRunningFlows.js: 86da2d78b524d42ac4ab9598820605bbbfb24c57
-  RAID/objects/nInput_CBPMFlowStore.js: a2abdbd0afe7082fe5c1be82460e4feab3ed74f2
+  RAID/objects/nInput_CBPMFlowStore.js: 72580096946c868e8263fb1a65b2a9568a2d750b
   RAID/objects/nInput_Schedulers.js: 96771d166e2574b6d5a526cc6025ad3abf1363d4
   RAID/objects/nInput_RAIDLookups.js: 1544374c0bec3e6c53eb60c1efe578f4b8f101ae
   RAID/objects/nInput_AFPing.js: c88598e75deb073715ed011272ae7ffb46962e8e
