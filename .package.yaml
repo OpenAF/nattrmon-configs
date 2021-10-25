@@ -18,7 +18,7 @@ name: nAttrMon
 main: ''
 mainJob: ''
 license: Apache 2.0 license
-version: '20211023'
+version: '20211024'
 dependencies:
   openaf: '>=20210721'
 files:
@@ -26,6 +26,10 @@ files:
 - .package.yaml
 - nAttrMon/objects/nInput_nAttrMon.js
 - utils/createConfig.yaml
+- S3/inputs.disabled/01.s3.buckets.yaml
+- S3/inputs.disabled/00.init.s3.yaml
+- S3/objects/nInput_S3Buckets.js
+- S3/objects/nInput_S3Init.js
 - RAID/objects/nInput_WELCache.js
 - RAID/objects/nInput_BPMDebugChecks.js
 - RAID/objects/nInput_ProcessManager.js
@@ -49,7 +53,11 @@ files:
 filesHash:
   README.md: d39ac664fdea882cf3bcb89570768aeba3a86891
   nAttrMon/objects/nInput_nAttrMon.js: c8ec9f45f724e7372b02751b893178490587641b
-  utils/createConfig.yaml: bd43f2ca42c3e40a9bdee1c4b953fc015d0234d7
+  utils/createConfig.yaml: 0ebe179909750bc9e4ab6a25d009d9abda375dc8
+  S3/inputs.disabled/01.s3.buckets.yaml: 25319586b67bc3bc5977f929a2a1690264db7315
+  S3/inputs.disabled/00.init.s3.yaml: 8ad83a626a1ee36cf57812f2b0d948745fa945a2
+  S3/objects/nInput_S3Buckets.js: 93c577ed77b99d6cc0b8770d0dfb46db010c7acd
+  S3/objects/nInput_S3Init.js: 33cbd0b1c12f01e3d95b69a74e5257424474d652
   RAID/objects/nInput_WELCache.js: d20e0fdc2d08f6273e25cc8a8b513be41f7207cd
   RAID/objects/nInput_BPMDebugChecks.js: 6e1042ba95cc3374d3516be2202538529344769f
   RAID/objects/nInput_ProcessManager.js: d1e3a3bfe34af52ff05ba623742dfd3979bf2484
