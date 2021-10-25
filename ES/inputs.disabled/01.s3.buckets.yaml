@@ -1,0 +1,6 @@
+input:
+  name    : S3 Buckets
+  execFrom: nInput_S3Buckets
+  execArgs:
+    chKeys   : s3Services
+    useCache : s3Cache

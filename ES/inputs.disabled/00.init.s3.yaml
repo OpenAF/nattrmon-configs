@@ -1,0 +1,44 @@
+  input:
+  # This one must be always before nInput_Init to initialize S3 inits
+  - name    : S3 Pre Init
+    execFrom: nInput_S3Init
+
+  - name    : S3 Init
+    execFrom: nInput_Init
+    execArgs:
+      S3:
+        s3Services:
+        - key      : s3Backups
+          secKey   : s3      
+          secBucket: nattrmon
+          secFile  : secrets.yaml
+          
+          bucket   : backups
+          recursive: true
+          
+        - key      : s3Inputs
+          secKey   : s3      
+          secBucket: nattrmon
+          secFile  : secrets.yaml
+
+          bucket   : inputs
+            
+      S3Cache:
+        s3Cache:
+        - key   : s3Backups
+          ttl   : 5000
+          chKeys: s3Services
+
+        - key   : s3Inputs
+          ttl   : 5000
+          chKeys: s3Services
+
+####
+# secrets.yaml example
+#
+# nattrmon:
+#   s3:
+#     url      : https://some.url.somewhere
+#     accessKey: ABCDE12345
+#     secret   : 12345ABCDE
+#     region   : ab-region-1
