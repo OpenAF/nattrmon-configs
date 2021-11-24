@@ -1,0 +1,5 @@
+input:
+  name    : ES Cluster Status
+  execFrom: nInput_ESCluster
+  execArgs:
+    chKeys: eskeys

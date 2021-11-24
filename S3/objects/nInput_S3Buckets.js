@@ -154,7 +154,7 @@ nInput_S3Buckets.prototype.input = function(scope, args) {
             res = this._get(this.params);
         }
     } catch(e) {
-        sprintErr(e);
+        logErr("S3Buckets error: "+ String(e));
     }
 
     // Assign to the attribute template name the array of results 

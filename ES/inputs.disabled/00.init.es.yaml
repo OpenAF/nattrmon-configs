@@ -1,0 +1,14 @@
+input:
+# This one must be always before nInput_Init to initialize S3 inits
+- name    : ES Pre Init
+  execFrom: nInput_ESInit
+
+- name    : ES Init
+  execFrom: nInput_Init
+  execArgs:
+    ES:
+      eskeys:
+      - key: ES Main
+        url: http://elasticsearch:9200
+        #user:
+        #pass:
