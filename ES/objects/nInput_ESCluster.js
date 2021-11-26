@@ -41,6 +41,8 @@ nInput_ESCluster.prototype._get = function(aMap) {
     var res = {
         nodes                 : ret._nodes.total,
         status                : ret.status,
+        version               : $rest().get(es.url).version.number,
+        maxUptimeInMillis     : ret.nodes.jvm.max_uptime_in_millis,
         totalIndices          : ret.indices.count,
         totalShards           : ret.indices.shards.total,
         totalPrimaryShards    : ret.indices.shards.primaries,

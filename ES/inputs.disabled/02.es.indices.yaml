@@ -4,4 +4,4 @@ input:
   execArgs:
     chKeys       : eskeys
     indexPrefixes:
-    - abc
+    - abc$

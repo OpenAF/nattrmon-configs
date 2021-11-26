@@ -42,7 +42,7 @@ nInput_ESIndices.prototype._get = function(aMap) {
         var prefix = this.params.indexPrefixes[iprefix]
 
         var res = { key: aMap.key, indexPrefix: prefix }
-        var f = $from(r).starts("index", prefix)
+        var f = $from(r).match("index", prefix)
     
         if (f.any()) {
             res.numIndices = f.count()
