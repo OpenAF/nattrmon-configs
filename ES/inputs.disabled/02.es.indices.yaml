@@ -1,0 +1,7 @@
+input:
+  name    : ES Indices
+  execFrom: nInput_ESIndices
+  execArgs:
+    chKeys       : eskeys
+    indexPrefixes:
+    - abc
