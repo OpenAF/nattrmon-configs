@@ -60,9 +60,13 @@ nInput_CBPMRunningFlows.prototype.input = function (scope, args) {
         var arr = [];
         var aKey = this.keys[i];
 
-        var listOfFlows;
+        var listOfFlows = []
         nattrmon.useObject(aKey, (aAF) => {
-            listOfFlows = ow.waf.cbpm.listFlows(aAF);
+            try {
+                listOfFlows = ow.waf.cbpm.listFlows(aAF);
+            } catch(e) {
+                logErr("CBPMRunningFlows | Can't retrieve list of flows for " + aKey)
+            }
         });
 
         //if (this.useDatabase) {
@@ -82,7 +86,7 @@ nInput_CBPMRunningFlows.prototype.input = function (scope, args) {
                     }
                 } catch (e) {
                     // Check if it never executed
-                    if (!String(e).match(/Cannot find the object/)) logErr("Can't retrieve instances, in " + aKey + ", for flow: " + r.flowName + " -- " + String(e));
+                    if (!String(e).match(/Cannot find the object/)) logErr("CBPMRunningFlows | Can't retrieve instances, in " + aKey + ", for flow: " + r.flowName + " -- " + String(e));
                 }
             });
 
