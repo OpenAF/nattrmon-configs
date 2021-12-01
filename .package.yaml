@@ -18,7 +18,7 @@ name: nAttrMon
 main: ''
 mainJob: ''
 license: Apache 2.0 license
-version: '20211128'
+version: '20211129'
 dependencies:
   openaf: '>=20210721'
 files:
@@ -42,6 +42,8 @@ files:
 - RAID/objects/nInput_AFPing.js
 - RAID/objects/nInput_DMPerformance.js
 - RAID/objects/nInput_Semaphores.js
+- RAID/inputs.disabled/05.processmanager.yaml
+- RAID/inputs.disabled/00.init.yaml
 - S3/objects/nInput_S3Buckets.js
 - S3/objects/nInput_S3Init.js
 - S3/inputs.disabled/01.s3.buckets.yaml
@@ -73,10 +75,12 @@ filesHash:
   RAID/objects/nInput_CBPMRunningFlows.js: b2380c7eab88cb5d565206a23892bb4ad6a9aa67
   RAID/objects/nInput_CBPMSemaphores.js: 75a0892cdad21aee8762d6d1346548bf6d42b59b
   RAID/objects/nInput_Schedulers.js: 96771d166e2574b6d5a526cc6025ad3abf1363d4
-  RAID/objects/nInput_ProcessManager.js: d1e3a3bfe34af52ff05ba623742dfd3979bf2484
+  RAID/objects/nInput_ProcessManager.js: 8f669353a5772570db85a6697c5601c9c5c21880
   RAID/objects/nInput_AFPing.js: c88598e75deb073715ed011272ae7ffb46962e8e
   RAID/objects/nInput_DMPerformance.js: 3d0f27b87f5b1a004e32559b0076c3cbfdf5d064
   RAID/objects/nInput_Semaphores.js: 9b0c0d8ca1b1c33d8faeaae89738360c8569534e
+  RAID/inputs.disabled/05.processmanager.yaml: 3857a9ab12246762fce7a8528de934685bb2dcea
+  RAID/inputs.disabled/00.init.yaml: 95bf62efc02cee480494ab426481de586b662b64
   S3/objects/nInput_S3Buckets.js: 5c47d779cd73d074898a4601aee3876ba8c8f999
   S3/objects/nInput_S3Init.js: 33cbd0b1c12f01e3d95b69a74e5257424474d652
   S3/inputs.disabled/01.s3.buckets.yaml: 25319586b67bc3bc5977f929a2a1690264db7315

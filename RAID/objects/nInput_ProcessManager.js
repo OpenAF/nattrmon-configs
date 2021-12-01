@@ -4,6 +4,7 @@
  * aMap is composed of:\
  *  - keys (a key string or an array of keys for an AF object)\
  *  - chKeys (a channel name for the keys of AF objects)\
+ *  - useCache (the AFCache to use for the StatusReport function)
  *  - attrTemplate (a template for the name of the attribute)\
  *  - extra (an array of extra map values to include from the chKeys channel values)\
  * \
@@ -64,7 +65,40 @@ nInput_ProcessManager.prototype.__get = function (aKey, aExtra) {
                     delete r.Threads;
                 }
                 if (isDef(r.Stoppable)) delete r.Stoppable;
-                if (isDef(r.Report)) r.Report = ow.obj.flatMap(r.Report);
+                if (isDef(r.Stats)) {
+                    r.Stats = ow.obj.flatMap(r.Stats, "_")
+
+                    traverse(r.Stats, (aK, aV, aP, aO) => {
+                        r["Stats_" + aK] = aV
+                    })
+
+                    delete r.Stats
+                }
+                if (isDef(r.Report)) {
+                    r.Report = ow.obj.flatMap(r.Report, "_")
+
+                    traverse(r.Report, (aK, aV, aP, aO) => {
+                        // Deal first with ms
+                        if (isString(aV) && aV.endsWith("ms")) {
+                            aK = aK + "InMs"
+                            aV = aV.replace(new RegExp("ms$"), "")
+                        }
+                        // Deal afterwards with seconds
+                        if (isString(aV) && aV.endsWith("s")) {
+                            aK = aK + "InSec"
+                            aV = aV.replace(new RegExp("s$"), "")
+                        }
+                        try {
+                        // Check Formatted
+                        if (aK.endsWith("Formatted")) {
+                            aV = Number(aV.replace(/ /g, ""))
+                            aK = aK.replace(new RegExp("Formatted$"), "")
+                        }
+                        }  catch(eee) { logErr(eee)}
+                        r["Report_" + aK] = aV
+                    })
+                    delete r.Report
+                }
 
                 return r;
             });
@@ -97,7 +131,7 @@ nInput_ProcessManager.prototype.input = function (scope, args) {
                 }
             }
         }
-        arr.push(this.__get(this.params.keys[i], extra));
+        arr = arr.concat(this.__get(this.params.keys[i], extra));
     }
 
     res[templify(this.params.attrTemplate)] = arr;

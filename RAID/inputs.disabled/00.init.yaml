@@ -1,0 +1,39 @@
+sec: &SEC
+  secFile  : /secrets/secrets.yaml
+  secBucket: nattrmon
+
+afpool: &AFPOOL
+  max: 3
+  min: 0
+  #keepalive    : 60000   # 1 min
+  #incrementsOf : 1
+  #retry        : 3
+  #retryInterval: 30000   # 30 sec
+
+dbpool: &DBPOOL
+  max: 3
+  min: 0
+  #keepalive    : 60000   # 1 min
+  #incrementsOf : 1
+  #retry        : 3
+  #retryInterval: 30000   # 30 sec
+
+input:
+   name         : RAID Init
+   execFrom     : nInput_Init
+   execArgs     :
+     AF:
+       # ------------------
+       raidServers:
+       - key       : raid
+         <<        : *SEC
+         secKey    : raid
+         timeout   : 5000
+         conTimeOut: 15000
+         pool      : *AFPOOL
+
+     AFCache:
+       # ------------------
+       raidCache:
+       - key       : raid
+         ttl       : 5000

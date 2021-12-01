@@ -1,0 +1,5 @@
+input:
+  name    : Process manager
+  execFrom: nInput_ProcessManager
+  execArgs:
+    chKeys: raidServers
