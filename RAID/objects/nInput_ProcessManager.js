@@ -78,7 +78,7 @@ nInput_ProcessManager.prototype.__get = function (aKey, aExtra) {
                     r.Report = ow.obj.flatMap(r.Report, "_")
 
                     traverse(r.Report, (aK, aV, aP, aO) => {
-                        // Deal first with ms
+                        /*// Deal first with ms
                         if (isString(aV) && aV.endsWith("ms")) {
                             aK = aK + "InMs"
                             aV = aV.replace(new RegExp("ms$"), "")
@@ -87,7 +87,7 @@ nInput_ProcessManager.prototype.__get = function (aKey, aExtra) {
                         if (isString(aV) && aV.endsWith("s")) {
                             aK = aK + "InSec"
                             aV = aV.replace(new RegExp("s$"), "")
-                        }
+                        }*/
                         try {
                         // Check Formatted
                         if (aK.endsWith("Formatted")) {
