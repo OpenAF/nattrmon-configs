@@ -1,0 +1,5 @@
+input:
+  name    : Input Licence
+  execFrom: nInput_Licence
+  execArgs:
+    chKeys: raidServers
