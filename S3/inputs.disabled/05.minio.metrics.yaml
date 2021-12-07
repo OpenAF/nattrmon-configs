@@ -1,0 +1,9 @@
+input:
+  name         : RAID MinIO
+  cron         : "*/1 * * * *"
+  waitForFinish: true
+  onlyOnEvent  : false
+  execFrom     : nInput_MinIOMetrics
+  execArgs     :
+    chKeys: s3Services
+    all   : true

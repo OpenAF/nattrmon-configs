@@ -20,6 +20,8 @@
           secKey   : s3      
           secBucket: nattrmon
           secFile  : secrets.yaml
+          #bearerToken: abcdefgh
+          #metricsPath: /minio/v2/metrics/cluster          
 
           bucket   : inputs
             
