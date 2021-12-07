@@ -18,7 +18,7 @@ name: nAttrMon
 main: ''
 mainJob: ''
 license: Apache 2.0 license
-version: '20211130'
+version: '20211206'
 dependencies:
   openaf: '>=20210721'
 files:
@@ -47,7 +47,9 @@ files:
 - RAID/inputs.disabled/00.init.yaml
 - RAID/inputs.disabled/10.licence.yaml
 - S3/objects/nInput_S3Buckets.js
+- S3/objects/nInput_MinIOMetrics.js
 - S3/objects/nInput_S3Init.js
+- S3/inputs.disabled/05.minio.metrics.yaml
 - S3/inputs.disabled/01.s3.buckets.yaml
 - S3/inputs.disabled/00.init.s3.yaml
 - utils/createConfig.yaml
@@ -86,9 +88,11 @@ filesHash:
   RAID/inputs.disabled/00.init.yaml: 95bf62efc02cee480494ab426481de586b662b64
   RAID/inputs.disabled/10.licence.yaml: 099f7bdf9a56c5512608b18c35b81c395841c8a3
   S3/objects/nInput_S3Buckets.js: 5c47d779cd73d074898a4601aee3876ba8c8f999
+  S3/objects/nInput_MinIOMetrics.js: 3899cf41daa7df47dcf413ca698eecf7959881c7
   S3/objects/nInput_S3Init.js: 33cbd0b1c12f01e3d95b69a74e5257424474d652
+  S3/inputs.disabled/05.minio.metrics.yaml: c6f2190823f1c44bcbef08444dbdfe00f86284e2
   S3/inputs.disabled/01.s3.buckets.yaml: 25319586b67bc3bc5977f929a2a1690264db7315
-  S3/inputs.disabled/00.init.s3.yaml: 8ad83a626a1ee36cf57812f2b0d948745fa945a2
+  S3/inputs.disabled/00.init.s3.yaml: 57d4f3c5d529fa1c16cd50b100be85cae9a37476
   utils/createConfig.yaml: 0ebe179909750bc9e4ab6a25d009d9abda375dc8
   ES/objects/nInput_ESCluster.js: bdc51d1038d1327dde60ae17331eb2bf393d2016
   ES/objects/nInput_ESInit.js: dddac678891ae9732b20e46fb64294d8e6d89eb1
