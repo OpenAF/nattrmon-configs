@@ -52,7 +52,14 @@ files:
 - S3/inputs.disabled/05.minio.metrics.yaml
 - S3/inputs.disabled/01.s3.buckets.yaml
 - S3/inputs.disabled/00.init.s3.yaml
+- utils/decomposeKibanaExport.yaml
 - utils/createConfig.yaml
+- Presto/kibana/dashboard--nAttrMon_Presto.ndjson
+- Presto/objects/nInput_PrestoCoordinator.js
+- Presto/objects/nInput_PrestoQueries.js
+- Presto/inputs.disabled/01.presto.coordinator.yaml
+- Presto/inputs.disabled/03.presto.endpoint.yaml
+- Presto/inputs.disabled/02.presto.queries.yaml
 - .package.yaml
 - ES/objects/nInput_ESCluster.js
 - ES/objects/nInput_ESInit.js
@@ -76,8 +83,8 @@ filesHash:
   RAID/objects/nInput_CBPMDebugChecks.js: 737f33ddd852309d0322f57e7adeeb307627652f
   RAID/objects/nInput_Licence.js: fdfaa3b46093f7fed5a884e5c06fc01dc473a461
   RAID/objects/nInput_WELCache.js: d20e0fdc2d08f6273e25cc8a8b513be41f7207cd
-  RAID/objects/nInput_RAIDLookups.js: 1544374c0bec3e6c53eb60c1efe578f4b8f101ae
-  RAID/objects/nInput_CBPMRunningFlows.js: b2380c7eab88cb5d565206a23892bb4ad6a9aa67
+  RAID/objects/nInput_RAIDLookups.js: d21c21a7fbf2c15945fac5eb31a296571d90d508
+  RAID/objects/nInput_CBPMRunningFlows.js: f6580e1424e2c2d151dea5640f612a9ce0b6bf24
   RAID/objects/nInput_CBPMSemaphores.js: 75a0892cdad21aee8762d6d1346548bf6d42b59b
   RAID/objects/nInput_Schedulers.js: 96771d166e2574b6d5a526cc6025ad3abf1363d4
   RAID/objects/nInput_ProcessManager.js: 739e7401525922babb4ddd7026a56d1918cd1b30
@@ -93,7 +100,14 @@ filesHash:
   S3/inputs.disabled/05.minio.metrics.yaml: c6f2190823f1c44bcbef08444dbdfe00f86284e2
   S3/inputs.disabled/01.s3.buckets.yaml: 25319586b67bc3bc5977f929a2a1690264db7315
   S3/inputs.disabled/00.init.s3.yaml: 57d4f3c5d529fa1c16cd50b100be85cae9a37476
+  utils/decomposeKibanaExport.yaml: d0265118651c9ae2467cbb28dc152f25bc0beb8d
   utils/createConfig.yaml: 0ebe179909750bc9e4ab6a25d009d9abda375dc8
+  Presto/kibana/dashboard--nAttrMon_Presto.ndjson: bfd741bb38d10f2e57f0916ef9f70df8d0ccd589
+  Presto/objects/nInput_PrestoCoordinator.js: b558c8416595e1bf315db74b0634a59dbd432385
+  Presto/objects/nInput_PrestoQueries.js: 673a830a7140cdc198c6ba0090d6b63b6c472a06
+  Presto/inputs.disabled/01.presto.coordinator.yaml: 9434c06aebe6a76fdbfb1ca1113e6868e4dd0c8e
+  Presto/inputs.disabled/03.presto.endpoint.yaml: 3b74806b28e8837033ace890f8cec2aa4c122ec8
+  Presto/inputs.disabled/02.presto.queries.yaml: 0b7e5075943f54656598a0ca809a2aaad1c97b28
   ES/objects/nInput_ESCluster.js: bdc51d1038d1327dde60ae17331eb2bf393d2016
   ES/objects/nInput_ESInit.js: dddac678891ae9732b20e46fb64294d8e6d89eb1
   ES/objects/nInput_ESIndices.js: 9780b939c22018f2a3ea5e7fbfbad0f408bda990

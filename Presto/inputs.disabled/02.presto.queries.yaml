@@ -1,0 +1,8 @@
+input:
+  name         : Input Presto queries
+  cron         : "*/10 * * * * *"
+  onlyOnEvent  : true
+  waitForFinish: true
+  execFrom     : nInput_PrestoQueries
+  execArgs     :
+    url: http://presto:8080   

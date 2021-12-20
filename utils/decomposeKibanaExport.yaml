@@ -1,0 +1,43 @@
+# Author: Nuno Aguiar
+
+help:
+  text   : Decomposes a Kibana all objects export into smaller files
+  expects: 
+  - name   : orig
+    desc   : The original export ndjson file
+    mandatory: true
+
+init:
+  help: &HELP
+
+todo:
+- Decompose kibana exports
+
+ojob:
+  opacks      :
+  - openaf: 20210515
+  catch       : "logErr(exception);"
+  logToConsole: true   # to change when finished
+        
+
+jobs:
+# ----------
+- name: Help
+  help: *HELP
+
+
+# ------------------------------
+- name: Decompose kibana exports 
+  exec: |
+    _$(args.orig, "orig").$_();
+
+    var o = io.readFileAsArray(args.orig);
+    var r = o.map(line => jsonParse(line));
+
+    r.filter(r => r.type != "config" && isDef(r.type))
+     .forEach(r => {
+        var file = r.type + "--" + r.attributes.title.replace(/ /g, "_").replace(/\*/g, "_") + ".ndjson";
+
+        log("Generating " + file + "...");
+        io.writeFileJSON(file, r, "");
+     });

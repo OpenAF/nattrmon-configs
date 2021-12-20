@@ -77,18 +77,24 @@ nInput_CBPMRunningFlows.prototype.input = function (scope, args) {
             var oo = [];
             var instances;
 
-            nattrmon.useObject(aKey, (aAF) => {
-                try {
-                    if (isString(parent.status)) {
-                        instances = ow.waf.cbpm.getFlowInstances(aAF, r.flowUUID, [parent.status.toUpperCase()], parent.limit, false, false);
-                    } else {
-                        instances = ow.waf.cbpm.getFlowInstances(aAF, r.flowUUID, isArray(parent.status) ? parent.status.map(r => r.toUpperCase()) : __, parent.limit, false, false);
+            if (this.useDB) {
+                nattrmon.useObject(nattrmon.getAssociatedObjectPool(aKey, "db.adm"), function(aDB) {
+                    
+                })
+            } else {
+                nattrmon.useObject(aKey, (aAF) => {
+                    try { 
+                        if (isString(parent.status)) {
+                            instances = ow.waf.cbpm.getFlowInstances(aAF, r.flowUUID, [parent.status.toUpperCase()], parent.limit, false, false);
+                        } else {
+                            instances = ow.waf.cbpm.getFlowInstances(aAF, r.flowUUID, isArray(parent.status) ? parent.status.map(r => r.toUpperCase()) : __, parent.limit, false, false);
+                        }
+                    } catch (e) {
+                        // Check if it never executed
+                        if (!String(e).match(/Cannot find the object/)) logErr("CBPMRunningFlows | Can't retrieve instances, in " + aKey + ", for flow: " + r.flowName + " -- " + String(e));
                     }
-                } catch (e) {
-                    // Check if it never executed
-                    if (!String(e).match(/Cannot find the object/)) logErr("CBPMRunningFlows | Can't retrieve instances, in " + aKey + ", for flow: " + r.flowName + " -- " + String(e));
-                }
-            });
+                })
+            }
 
             if (isDef(instances) && isArray(instances)) {
                 $from(instances).select((t) => {
