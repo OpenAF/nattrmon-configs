@@ -1,0 +1,12 @@
+input:
+  name         : Input endpoint
+  cron         : "*/2 * * * * *" 	
+  waitForFinish: true
+  onlyOnEvent  : false
+  execFrom     : nInput_EndPoints
+  execArgs     :
+      urls  :
+        Presto/Coordinator endpoint:
+          url                : http://presto:8080
+          responseCode       : 200
+          includeLatency     : true

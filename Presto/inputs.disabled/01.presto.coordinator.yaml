@@ -1,0 +1,6 @@
+input:
+  name    : Input Presto Coordinator
+  cron    : "*/5 * * * * *"
+  execFrom: nInput_PrestoCoordinator
+  execArgs:
+    url: http://presto:8080

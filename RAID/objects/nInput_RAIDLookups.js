@@ -64,15 +64,15 @@ nInput_RAIDLookups.prototype.input = function(scope, args) {
                    Name              : aKey,
                    Lookup            : lk.shortname,
                    Status            : lk.extraMetadata.report.status,
-                   InUse             : elk.resourceInfo.InUse,
-                   Count             : elk.resourceInfo.RecordCount,
-                   LastUsedTime      : convertRAIDDates(elk.resourceInfo.LastUsedTime),
-                   LoadTime          : convertRAIDDates(elk.resourceInfo.LoadTime),
-                   TotalLoadTimeMs   : elk.resourceInfo.TotalLoadTime,
-                   LoadedVersion     : elk.resourceInfo.LoadedLookupVersion,
-                   IndexMemoryBytes  : ow.format.fromBytesAbbreviation(elk.resourceInfo.IdxMemoryUsage),
-                   ValuesMemoryBytes : ow.format.fromBytesAbbreviation(elk.resourceInfo.ValMemoryUsage),
-                   TotalMemoryBytes  : ow.format.fromBytesAbbreviation(elk.resourceInfo.TotalMemoryUsage)
+                   InUse             : isDef(elk.resourceInfo) ? elk.resourceInfo.InUse : __,
+                   Count             : isDef(elk.resourceInfo) ? elk.resourceInfo.RecordCount : __,
+                   LastUsedTime      : isDef(elk.resourceInfo) ? convertRAIDDates(elk.resourceInfo.LastUsedTime) : __,
+                   LoadTime          : isDef(elk.resourceInfo) ? convertRAIDDates(elk.resourceInfo.LoadTime) : __,
+                   TotalLoadTimeMs   : isDef(elk.resourceInfo) ? elk.resourceInfo.TotalLoadTime : __,
+                   LoadedVersion     : isDef(elk.resourceInfo) ? elk.resourceInfo.LoadedLookupVersion : __,
+                   IndexMemoryBytes  : isDef(elk.resourceInfo) ? ow.format.fromBytesAbbreviation(elk.resourceInfo.IdxMemoryUsage) : __,
+                   ValuesMemoryBytes : isDef(elk.resourceInfo) ? ow.format.fromBytesAbbreviation(elk.resourceInfo.ValMemoryUsage) : __,
+                   TotalMemoryBytes  : isDef(elk.resourceInfo) ? ow.format.fromBytesAbbreviation(elk.resourceInfo.TotalMemoryUsage) : __
                 });
             });
           } catch(e) {
