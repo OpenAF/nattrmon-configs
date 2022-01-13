@@ -18,20 +18,20 @@ var nInput_PrestoQueries = function(aMap) {
         this.params = {};
     }
 
-    _$(this.params.url, "url").isString().$_()
-
     if (isUnDef(this.params.attrTemplate)) this.params.attrTemplate = "Presto/Queries";
 
     nInput.call(this, this.input);
 };
 inherit(nInput_PrestoQueries, nInput);
 
-nInput_PrestoQueries.prototype.input = function(scope, args) {
-    var ret = {};
+nInput_PrestoQueries.prototype._get = function(aObj) {
+    _$(aObj, "Presto aObj").isMap().$_()
+    _$(aObj.url, "Presto url (" + af.toSLON(aObj) + ")").isString().$_()
 
-    var info  = $rest({ login: this.params.user, pass: this.params.pass }).get(this.params.url + "/v1/query")
+    var info  = $rest({ login: aObj.user, pass: aObj.pass }).get(aObj.url + "/v1/query")
 
-    ret[templify(this.params.attrTemplate)] = info.map(q => ({
+    return info.map(q => ({
+        key          : aObj.key,
         queryId      : q.queryId,
         state        : q.state,
         memoryPool   : q.memoryPool,
@@ -43,6 +43,35 @@ nInput_PrestoQueries.prototype.input = function(scope, args) {
         queryType    : q.queryType,
         cumTotalMem  : q.queryStats.cumulativeTotalMemory 
     }))
+}
+
+nInput_PrestoQueries.prototype.input = function(scope, args) {
+    var ret = {};
+
+    try {
+        // Let's check if chKeys is being used
+        if (isDef(this.params.chKeys)) {
+            this.params.keys = $ch(this.params.chKeys).getKeys().map(r => r.key)
+
+            // for each key
+            for(var i in this.params.keys) {
+                // get the data from the chKeys
+                var v = $ch(this.params.chKeys).get({ key: this.params.keys[i] })
+                // Apply $sec transform
+                v = __nam_getSec(v)
+
+                // Call _get to get the corresponding array of results per storage class
+                res = res.concat(this._get(v))
+            }
+        } else {
+            // If no chKeys are being used it's expected to have the same info in params
+            res = this._get(this.params)
+        }
+    } catch(e) {
+        logErr("PrestoQueries error: " + String(e))
+    }
+
+    ret[templify(this.params.attrTemplate)] = res
 
     return ret;
 };
