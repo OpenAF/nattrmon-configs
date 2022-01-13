@@ -58,9 +58,9 @@ nInput_RAIDLookups.prototype.input = function(scope, args) {
             listOfLKs = ow.waf.dp.listLookups(aAF);
 
             listOfLKs.forEach(lk => {
-                var elk = ow.waf.dp.getLookup(aAF, lk.shortname);
+               var elk = ow.waf.dp.getLookup(aAF, lk.shortname);
 
-                arr.push({
+               arr.push({
                    Name              : aKey,
                    Lookup            : lk.shortname,
                    Status            : lk.extraMetadata.report.status,
