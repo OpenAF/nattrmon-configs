@@ -141,13 +141,17 @@ nInput_S3Buckets.prototype.input = function(scope, args) {
 
             // for each key
             for(var i in this.params.keys) {
-                // get the data from the chKeys
-                var v = $ch(this.params.chKeys).get({ key: this.params.keys[i] });
-                // Apply $sec transform
-                v = __nam_getSec(v);
+                try {
+                    // get the data from the chKeys
+                    var v = $ch(this.params.chKeys).get({ key: this.params.keys[i] });
+                    // Apply $sec transform
+                    v = __nam_getSec(v);
 
-                // Call _get to get the corresponding array of results per storage class
-                res = res.concat(this._get(v));
+                    // Call _get to get the corresponding array of results per storage class
+                    res = res.concat(this._get(v));
+                } catch(e1) {
+                    logErr("S3Buckets error (key=" + this.params.keys[i] + "): "+ stringify(e));
+                }
             }
         } else {
             // If no chKeys are being used it's expected to have the same info in params
