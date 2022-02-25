@@ -1,0 +1,10 @@
+input:
+   name         : Freedom RAID Schedulers
+   cron         : "* */30 * * * *"
+   waitForFinish: true
+   onlyOnEvent  : true
+   execFrom     : nInput_Schedulers
+   execArgs     :
+      chKeys    : raidServers1
+#      statusExclude : ["Not Ready"]
+#      excludeNoLastExec: true

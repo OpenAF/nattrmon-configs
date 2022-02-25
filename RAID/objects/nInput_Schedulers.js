@@ -10,6 +10,7 @@
  *    - statusExclude  (an array of status to exclude default: excludes nothing)\
  *    - namesExclude   (an array of scheduler names to exclude default: excludes nothing)\
  *    - excludeLongAgo (defaults to false but if true will not output the HowLongAgo field)\
+ *    - excludeNoLastExec (defaults to false but if true will exclude schedulers with no last exec date)\
  * \
  * </odoc>
  */
@@ -39,6 +40,8 @@ var nInput_Schedulers = function(aMap) {
 
     this.params.excludeLongAgo = _$(this.params.excludeLongAgo, "excludeLongAgo").isBoolean().default(false);
 
+    this.params.excludeNoLastExec = _$(this.params.excludeNoLastExec, "excludeNoLastExec").isBoolean().default(false);
+
     nInput.call(this, this.input);
 }
 inherit(nInput_Schedulers, nInput);
@@ -63,6 +66,10 @@ nInput_Schedulers.prototype.__getSchedulers = function(aKey, scope) {
             for(i in this.params.namesExclude) {
                 schedulers = $from(schedulers).notEquals("name",this.params.namesExclude[i]).select();
             }
+        }
+
+        if (this.params.excludeNoLastExec) {
+            schedulers = $from(schedulers).notContains("lastExecDate", null).select();
         }
 
 	if(this.params.statusInclude.length > 0) {
