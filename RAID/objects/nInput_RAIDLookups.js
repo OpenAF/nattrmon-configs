@@ -5,6 +5,7 @@
  * You can create an input to get a list of existing RAID lookups with a map composed of:\
  *    - keys (a key string or an array of keys for an AF object)\
  *    - chKeys (a channel name for the keys of AF objects)\
+ *    - excludeUnloaded (exclude Unloaded lk from output, defaults to false)\
  * \
  * </odoc>
  */
@@ -32,6 +33,8 @@
     }
 
     this.attrTemplate = aMap.attrTemplate;
+    
+    this.excludeUnloaded = _$(aMap.excludeUnloaded, "excludeUnloaded").isBoolean().default(false);
 
     ow.loadWAF();
     nInput.call(this, this.input);
@@ -56,6 +59,10 @@ nInput_RAIDLookups.prototype.input = function(scope, args) {
         nattrmon.useObject(aKey, (aAF) => {
           try {
             listOfLKs = ow.waf.dp.listLookups(aAF);
+
+            if (this.excludeUnloaded) {
+                listOfLKs = $from(listOfLKs).notEquals("extraMetadata.report.status", "UNLOADED").select(); 
+            }
 
             listOfLKs.forEach(lk => {
                var elk = ow.waf.dp.getLookup(aAF, lk.shortname);
