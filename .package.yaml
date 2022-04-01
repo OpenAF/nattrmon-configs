@@ -18,111 +18,117 @@ name: nAttrMon
 main: ''
 mainJob: ''
 license: Apache 2.0 license
-version: '20220221'
+version: '20220331'
 dependencies:
   openaf: '>=20210721'
 files:
-- LICENSE
-- S3/objects/nInput_S3Init.js
-- S3/objects/nInput_S3Buckets.js
-- S3/objects/nInput_MinIOMetrics.js
-- S3/inputs.disabled/00.init.s3.yaml
-- S3/inputs.disabled/01.s3.buckets.yaml
-- S3/inputs.disabled/05.minio.metrics.yaml
-- utils/decomposeKibanaExport.yaml
-- utils/createConfig.yaml
+- nAttrMon/objects/nInput_nAttrMon.js
+- RAID/objects/nInput_RAIDStatus_DB.js
+- RAID/objects/nInput_BPMDebugChecks.js
+- RAID/objects/nInput_RAIDSQLs.js
+- RAID/objects/nInput_CBPMFlowManager.js
+- RAID/objects/nInput_RAIDQueryManager.js
+- RAID/objects/nInput_RAIDMemory.js
+- RAID/objects/nInput_BPMNRunningFlows.js
+- RAID/objects/nInput_RAIDGCMemory.js
+- RAID/objects/nInput_CBPMFlowStore.js
+- RAID/objects/nInput_CBPMDebugChecks.js
+- RAID/objects/nInput_Licence.js
+- RAID/objects/nInput_WELCache.js
+- RAID/objects/nInput_RAIDLookups.js
+- RAID/objects/nInput_CBPMRunningFlows.js
+- RAID/objects/nInput_CBPMSemaphores.js
+- RAID/objects/nInput_Schedulers.js
 - RAID/objects/nInput_ProcessManager.js
 - RAID/objects/nInput_AFPing.js
-- RAID/objects/nInput_CBPMDebugChecks.js
-- RAID/objects/nInput_Semaphores.js
-- RAID/objects/nInput_RAIDQueryManager.js
 - RAID/objects/nInput_DMPerformance.js
-- RAID/objects/nInput_CBPMFlowStore.js
-- RAID/objects/nInput_BPMDebugChecks.js
-- RAID/objects/nInput_WELCache.js
-- RAID/objects/nInput_BPMNRunningFlows.js
-- RAID/objects/nInput_CBPMFlowManager.js
-- RAID/objects/nInput_CBPMRunningFlows.js
-- RAID/objects/nInput_RAIDGCMemory.js
-- RAID/objects/nInput_RAIDMemory.js
-- RAID/objects/nInput_RAIDStatus_DB.js
-- RAID/objects/nInput_Schedulers.js
-- RAID/objects/nInput_RAIDSQLs.js
-- RAID/objects/nInput_RAIDLookups.js
-- RAID/objects/nInput_Licence.js
-- RAID/objects/nInput_CBPMSemaphores.js
+- RAID/objects/nInput_Semaphores.js
+- RAID/inputs.disabled/05.processmanager.yaml
 - RAID/inputs.disabled/13.RAIDSchedulers.yaml
 - RAID/inputs.disabled/00.init.yaml
-- RAID/inputs.disabled/05.processmanager.yaml
 - RAID/inputs.disabled/10.licence.yaml
-- ES/objects/nInput_ESInit.js
-- ES/objects/nInput_ESIndices.js
-- ES/objects/nInput_ESCluster.js
-- ES/inputs.disabled/02.es.indices.yaml
-- ES/inputs.disabled/01.es.status.yaml
-- ES/inputs.disabled/00.init.es.yaml
-- nAttrMon/objects/nInput_nAttrMon.js
-- Presto/objects/nInput_PrestoQueries.js
+- S3/objects/nInput_S3Buckets.js
+- S3/objects/nInput_MinIOMetrics.js
+- S3/objects/nInput_S3Init.js
+- S3/inputs.disabled/05.minio.metrics.yaml
+- S3/inputs.disabled/01.s3.buckets.yaml
+- S3/inputs.disabled/00.init.s3.yaml
+- utils/decomposeKibanaExport.yaml
+- utils/createConfig.yaml
+- Presto/kibana/dashboard--nAttrMon_Presto.ndjson
 - Presto/objects/nInput_PrestoCoordinator.js
+- Presto/objects/nInput_PrestoQueries.js
 - Presto/objects/nInput_PrestoInit.js
-- Presto/inputs.disabled/02.presto.queries.yaml
-- Presto/inputs.disabled/03.presto.endpoint.yaml
 - Presto/inputs.disabled/00.presto.init.yaml
 - Presto/inputs.disabled/01.presto.coordinator.yaml
-- Presto/kibana/dashboard--nAttrMon_Presto.ndjson
-- Pinot/objects/nInput_PinotMetrics.js
-- Pinot/objects/nInput_PinotInit.js
+- Presto/inputs.disabled/03.presto.endpoint.yaml
+- Presto/inputs.disabled/02.presto.queries.yaml
+- .github/ISSUE_TEMPLATE/feature_request.md
+- .github/ISSUE_TEMPLATE/bug_report.md
+- .github/workflows/github-actions.yml
 - .package.yaml
+- ES/objects/nInput_ESCluster.js
+- ES/objects/nInput_ESInit.js
+- ES/objects/nInput_ESIndices.js
+- ES/inputs.disabled/01.es.status.yaml
+- ES/inputs.disabled/02.es.indices.yaml
+- ES/inputs.disabled/00.init.es.yaml
+- LICENSE
 - README.md
+- Pinot/objects/nInput_PinotInit.js
+- Pinot/objects/nInput_PinotMetrics.js
 filesHash:
-  LICENSE: 7df059597099bb7dcf25d2a9aedfaf4465f72d8d
-  S3/objects/nInput_S3Init.js: 33cbd0b1c12f01e3d95b69a74e5257424474d652
-  S3/objects/nInput_S3Buckets.js: 1d57cb21c7d82dc2a2cc11b47768b062c4f350bd
-  S3/objects/nInput_MinIOMetrics.js: 8cfc8979dc48f8052c8ef28a757323db2d1fc939
-  S3/inputs.disabled/00.init.s3.yaml: 57d4f3c5d529fa1c16cd50b100be85cae9a37476
-  S3/inputs.disabled/01.s3.buckets.yaml: 25319586b67bc3bc5977f929a2a1690264db7315
-  S3/inputs.disabled/05.minio.metrics.yaml: c6f2190823f1c44bcbef08444dbdfe00f86284e2
-  utils/decomposeKibanaExport.yaml: d0265118651c9ae2467cbb28dc152f25bc0beb8d
-  utils/createConfig.yaml: 0ebe179909750bc9e4ab6a25d009d9abda375dc8
+  nAttrMon/objects/nInput_nAttrMon.js: c8ec9f45f724e7372b02751b893178490587641b
+  RAID/objects/nInput_RAIDStatus_DB.js: a59c7b62281341e3b0a3e279ff12eaaa85b43eac
+  RAID/objects/nInput_BPMDebugChecks.js: 6e1042ba95cc3374d3516be2202538529344769f
+  RAID/objects/nInput_RAIDSQLs.js: 370e0fb53d8255c755bc3f7a8b8f9c082ad6c9bb
+  RAID/objects/nInput_CBPMFlowManager.js: 5128f64828ee2f9296376931a7a8dae80ff74aed
+  RAID/objects/nInput_RAIDQueryManager.js: e17fad0c68b57f547544ba3b67c053bb3fa21bf9
+  RAID/objects/nInput_RAIDMemory.js: 5b941a58ef1b523d3f5825435ecfb72dabb7143c
+  RAID/objects/nInput_BPMNRunningFlows.js: 9e857ff89a690227ac550c4bf48480e2be05a0b3
+  RAID/objects/nInput_RAIDGCMemory.js: 61db6bc880acfd8ce0845b2a604f403bc3f26730
+  RAID/objects/nInput_CBPMFlowStore.js: c0ca266117bde6a9a4456c6eba31e1fede9c5ca5
+  RAID/objects/nInput_CBPMDebugChecks.js: 737f33ddd852309d0322f57e7adeeb307627652f
+  RAID/objects/nInput_Licence.js: fdfaa3b46093f7fed5a884e5c06fc01dc473a461
+  RAID/objects/nInput_WELCache.js: d20e0fdc2d08f6273e25cc8a8b513be41f7207cd
+  RAID/objects/nInput_RAIDLookups.js: 9352bb5d5e350f787fd352ebaa36274a56599066
+  RAID/objects/nInput_CBPMRunningFlows.js: f6580e1424e2c2d151dea5640f612a9ce0b6bf24
+  RAID/objects/nInput_CBPMSemaphores.js: 75a0892cdad21aee8762d6d1346548bf6d42b59b
+  RAID/objects/nInput_Schedulers.js: 141033ee259a1a5652c63a57c92648fef9d8ac85
   RAID/objects/nInput_ProcessManager.js: d1e3a3bfe34af52ff05ba623742dfd3979bf2484
   RAID/objects/nInput_AFPing.js: c88598e75deb073715ed011272ae7ffb46962e8e
-  RAID/objects/nInput_CBPMDebugChecks.js: 737f33ddd852309d0322f57e7adeeb307627652f
+  RAID/objects/nInput_DMPerformance.js: 588a31f70e1ad07a431bfb2e8db34ff50544878c
   RAID/objects/nInput_Semaphores.js: 9b0c0d8ca1b1c33d8faeaae89738360c8569534e
-  RAID/objects/nInput_RAIDQueryManager.js: e17fad0c68b57f547544ba3b67c053bb3fa21bf9
-  RAID/objects/nInput_DMPerformance.js: 3d0f27b87f5b1a004e32559b0076c3cbfdf5d064
-  RAID/objects/nInput_CBPMFlowStore.js: c0ca266117bde6a9a4456c6eba31e1fede9c5ca5
-  RAID/objects/nInput_BPMDebugChecks.js: 6e1042ba95cc3374d3516be2202538529344769f
-  RAID/objects/nInput_WELCache.js: d20e0fdc2d08f6273e25cc8a8b513be41f7207cd
-  RAID/objects/nInput_BPMNRunningFlows.js: 9e857ff89a690227ac550c4bf48480e2be05a0b3
-  RAID/objects/nInput_CBPMFlowManager.js: 5128f64828ee2f9296376931a7a8dae80ff74aed
-  RAID/objects/nInput_CBPMRunningFlows.js: f6580e1424e2c2d151dea5640f612a9ce0b6bf24
-  RAID/objects/nInput_RAIDGCMemory.js: 61db6bc880acfd8ce0845b2a604f403bc3f26730
-  RAID/objects/nInput_RAIDMemory.js: 5b941a58ef1b523d3f5825435ecfb72dabb7143c
-  RAID/objects/nInput_RAIDStatus_DB.js: a59c7b62281341e3b0a3e279ff12eaaa85b43eac
-  RAID/objects/nInput_Schedulers.js: 141033ee259a1a5652c63a57c92648fef9d8ac85
-  RAID/objects/nInput_RAIDSQLs.js: 370e0fb53d8255c755bc3f7a8b8f9c082ad6c9bb
-  RAID/objects/nInput_RAIDLookups.js: c32c1e8055fa3494307db52f0d6a70e84cf89065
-  RAID/objects/nInput_Licence.js: fdfaa3b46093f7fed5a884e5c06fc01dc473a461
-  RAID/objects/nInput_CBPMSemaphores.js: 75a0892cdad21aee8762d6d1346548bf6d42b59b
+  RAID/inputs.disabled/05.processmanager.yaml: 64f57680baf47f46e82d36929f693ceaaeed96ed
   RAID/inputs.disabled/13.RAIDSchedulers.yaml: 91e02536d8038be0138e6361eb3c986a2a036d92
   RAID/inputs.disabled/00.init.yaml: 95bf62efc02cee480494ab426481de586b662b64
-  RAID/inputs.disabled/05.processmanager.yaml: 64f57680baf47f46e82d36929f693ceaaeed96ed
   RAID/inputs.disabled/10.licence.yaml: 099f7bdf9a56c5512608b18c35b81c395841c8a3
-  ES/objects/nInput_ESInit.js: dddac678891ae9732b20e46fb64294d8e6d89eb1
-  ES/objects/nInput_ESIndices.js: 9780b939c22018f2a3ea5e7fbfbad0f408bda990
-  ES/objects/nInput_ESCluster.js: bdc51d1038d1327dde60ae17331eb2bf393d2016
-  ES/inputs.disabled/02.es.indices.yaml: 45679210b3b51c1a7de0588ca528f023613dccc3
-  ES/inputs.disabled/01.es.status.yaml: 3f92c2cdc50ed9bb279e4679cb2ebb1ba05f6d84
-  ES/inputs.disabled/00.init.es.yaml: d0d9b4009a92573ee30e4d01fa4388ebf736ae16
-  nAttrMon/objects/nInput_nAttrMon.js: c8ec9f45f724e7372b02751b893178490587641b
-  Presto/objects/nInput_PrestoQueries.js: b83d1c9d79f899e4a6fa106ab330cc5eede48c96
+  S3/objects/nInput_S3Buckets.js: 1d57cb21c7d82dc2a2cc11b47768b062c4f350bd
+  S3/objects/nInput_MinIOMetrics.js: 8cfc8979dc48f8052c8ef28a757323db2d1fc939
+  S3/objects/nInput_S3Init.js: 33cbd0b1c12f01e3d95b69a74e5257424474d652
+  S3/inputs.disabled/05.minio.metrics.yaml: c6f2190823f1c44bcbef08444dbdfe00f86284e2
+  S3/inputs.disabled/01.s3.buckets.yaml: 25319586b67bc3bc5977f929a2a1690264db7315
+  S3/inputs.disabled/00.init.s3.yaml: 57d4f3c5d529fa1c16cd50b100be85cae9a37476
+  utils/decomposeKibanaExport.yaml: d0265118651c9ae2467cbb28dc152f25bc0beb8d
+  utils/createConfig.yaml: 0ebe179909750bc9e4ab6a25d009d9abda375dc8
+  Presto/kibana/dashboard--nAttrMon_Presto.ndjson: bfd741bb38d10f2e57f0916ef9f70df8d0ccd589
   Presto/objects/nInput_PrestoCoordinator.js: ca6b3ea0f1dd72e26b9018d262d833451baf1e6d
+  Presto/objects/nInput_PrestoQueries.js: b83d1c9d79f899e4a6fa106ab330cc5eede48c96
   Presto/objects/nInput_PrestoInit.js: 37d796f331f3887bd78fe8f067aacd6d7b264ba6
-  Presto/inputs.disabled/02.presto.queries.yaml: 0b7e5075943f54656598a0ca809a2aaad1c97b28
-  Presto/inputs.disabled/03.presto.endpoint.yaml: 3b74806b28e8837033ace890f8cec2aa4c122ec8
   Presto/inputs.disabled/00.presto.init.yaml: 37d796f331f3887bd78fe8f067aacd6d7b264ba6
   Presto/inputs.disabled/01.presto.coordinator.yaml: 9434c06aebe6a76fdbfb1ca1113e6868e4dd0c8e
-  Presto/kibana/dashboard--nAttrMon_Presto.ndjson: bfd741bb38d10f2e57f0916ef9f70df8d0ccd589
-  Pinot/objects/nInput_PinotMetrics.js: a7bde744de334abb979043f885e0a2af792aa1fd
-  Pinot/objects/nInput_PinotInit.js: a22cc8466b1128c8ad2f03e6a67635e4770677aa
+  Presto/inputs.disabled/03.presto.endpoint.yaml: 3b74806b28e8837033ace890f8cec2aa4c122ec8
+  Presto/inputs.disabled/02.presto.queries.yaml: 0b7e5075943f54656598a0ca809a2aaad1c97b28
+  .github/ISSUE_TEMPLATE/feature_request.md: f6867a2f0417fe89a0f2008730ee19dd38422021
+  .github/ISSUE_TEMPLATE/bug_report.md: 83d211c67c12e8c1f6e9f796cfd0cecbf5160e15
+  .github/workflows/github-actions.yml: db16d169fdeb16f96c66e0cd797535132435d3fa
+  ES/objects/nInput_ESCluster.js: bdc51d1038d1327dde60ae17331eb2bf393d2016
+  ES/objects/nInput_ESInit.js: dddac678891ae9732b20e46fb64294d8e6d89eb1
+  ES/objects/nInput_ESIndices.js: 9780b939c22018f2a3ea5e7fbfbad0f408bda990
+  ES/inputs.disabled/01.es.status.yaml: 3f92c2cdc50ed9bb279e4679cb2ebb1ba05f6d84
+  ES/inputs.disabled/02.es.indices.yaml: 45679210b3b51c1a7de0588ca528f023613dccc3
+  ES/inputs.disabled/00.init.es.yaml: d0d9b4009a92573ee30e4d01fa4388ebf736ae16
+  LICENSE: 7df059597099bb7dcf25d2a9aedfaf4465f72d8d
   README.md: d39ac664fdea882cf3bcb89570768aeba3a86891
+  Pinot/objects/nInput_PinotInit.js: a22cc8466b1128c8ad2f03e6a67635e4770677aa
+  Pinot/objects/nInput_PinotMetrics.js: a7bde744de334abb979043f885e0a2af792aa1fd
