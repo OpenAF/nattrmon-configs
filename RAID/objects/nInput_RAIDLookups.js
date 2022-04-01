@@ -48,6 +48,7 @@ nInput_RAIDLookups.prototype.input = function(scope, args) {
     if (isDef(this.chKeys)) this.keys = $stream($ch(this.chKeys).getKeys()).map("key").toArray();
 
     var convertRAIDDates = aRAIDDate => {
+       if (isUnDef(aRAIDDate)) return __
        return ow.format.fromWeDoDateToDate(aRAIDDate);
     };
 
@@ -65,22 +66,26 @@ nInput_RAIDLookups.prototype.input = function(scope, args) {
             }
 
             listOfLKs.forEach(lk => {
-               var elk = ow.waf.dp.getLookup(aAF, lk.shortname);
+                try {
+                    var elk = ow.waf.dp.getLookup(aAF, lk.shortname);
 
-               arr.push({
-                   Name              : aKey,
-                   Lookup            : lk.shortname,
-                   Status            : lk.extraMetadata.report.status,
-                   InUse             : isDef(elk.resourceInfo) ? elk.resourceInfo.InUse : __,
-                   Count             : isDef(elk.resourceInfo) ? elk.resourceInfo.RecordCount : __,
-                   LastUsedTime      : isDef(elk.resourceInfo) ? convertRAIDDates(elk.resourceInfo.LastUsedTime) : __,
-                   LoadTime          : isDef(elk.resourceInfo) ? convertRAIDDates(elk.resourceInfo.LoadTime) : __,
-                   TotalLoadTimeMs   : isDef(elk.resourceInfo) ? elk.resourceInfo.TotalLoadTime : __,
-                   LoadedVersion     : isDef(elk.resourceInfo) ? elk.resourceInfo.LoadedLookupVersion : __,
-                   IndexMemoryBytes  : isDef(elk.resourceInfo) ? ow.format.fromBytesAbbreviation(elk.resourceInfo.IdxMemoryUsage) : __,
-                   ValuesMemoryBytes : isDef(elk.resourceInfo) ? ow.format.fromBytesAbbreviation(elk.resourceInfo.ValMemoryUsage) : __,
-                   TotalMemoryBytes  : isDef(elk.resourceInfo) ? ow.format.fromBytesAbbreviation(elk.resourceInfo.TotalMemoryUsage) : __
-                });
+                    arr.push({
+                        Name              : aKey,
+                        Lookup            : lk.shortname,
+                        Status            : lk.extraMetadata.report.status,
+                        InUse             : isDef(elk.resourceInfo) ? elk.resourceInfo.InUse : __,
+                        Count             : isDef(elk.resourceInfo) ? elk.resourceInfo.RecordCount : __,
+                        LastUsedTime      : isDef(elk.resourceInfo) ? convertRAIDDates(elk.resourceInfo.LastUsedTime) : __,
+                        LoadTime          : isDef(elk.resourceInfo) ? convertRAIDDates(elk.resourceInfo.LoadTime) : __,
+                        TotalLoadTimeMs   : isDef(elk.resourceInfo) ? elk.resourceInfo.TotalLoadTime : __,
+                        LoadedVersion     : isDef(elk.resourceInfo) ? elk.resourceInfo.LoadedLookupVersion : __,
+                        IndexMemoryBytes  : isDef(elk.resourceInfo) ? ow.format.fromBytesAbbreviation(elk.resourceInfo.IdxMemoryUsage) : __,
+                        ValuesMemoryBytes : isDef(elk.resourceInfo) ? ow.format.fromBytesAbbreviation(elk.resourceInfo.ValMemoryUsage) : __,
+                        TotalMemoryBytes  : isDef(elk.resourceInfo) ? ow.format.fromBytesAbbreviation(elk.resourceInfo.TotalMemoryUsage) : __
+                        });
+                } catch(lke1) {
+                    logErr("nInput_RAIDLookups | " + lk.shortname + " | " + lke1)
+                }
             });
           } catch(e) {
             logErr("nInput_RAIDLookups | " + String(e));
