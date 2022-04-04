@@ -97,7 +97,7 @@ nInput_ProcessManager.prototype.input = function (scope, args) {
                 }
             }
         }
-        arr.push(this.__get(this.params.keys[i], extra));
+        arr = arr.concat(this.__get(this.params.keys[i], extra))
     }
 
     res[templify(this.params.attrTemplate)] = arr;
