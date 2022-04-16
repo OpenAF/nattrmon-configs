@@ -8,6 +8,7 @@
  *    - include (array of uuids and names to include)\
  *    - exclude (array of uuids and names to exclude)\
  *    - attrTemplate (a string template for the name of the attribute using {{key}})\
+ *    - excludeNeverExecuted (a boolean to exclude flow with no instances of execution, will default to false)
  * \
  * </odoc>
  */
