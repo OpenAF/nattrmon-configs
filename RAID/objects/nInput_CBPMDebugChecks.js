@@ -8,6 +8,7 @@
  *    - include (array of uuids and names to include)\
  *    - exclude (array of uuids and names to exclude)\
  *    - attrTemplate (a string template for the name of the attribute using {{key}})\
+ *    - excludeNeverExecuted (a boolean to exclude flow with no instances of execution, will default to false)
  * \
  * </odoc>
  */
@@ -35,6 +36,8 @@ var nInput_CBPMDebugChecks = function(aMap) {
 
     this.includes = _$(aMap.includes).isArray().default(void 0);
     this.excludes = _$(aMap.excludes).isArray().default(void 0);
+
+    this.excludeNeverExecuted = _$(aMap.excludeNeverExecuted).isBoolean().default(false);
 
     ow.loadWAF();
     plugin("XML");
@@ -77,6 +80,10 @@ nInput_CBPMDebugChecks.prototype.input = function(scope, args) {
                 (parent.includes.indexOf(r.flowUUID) <  0 || parent.includes.indexOf(r.flowName) <  0)) doIt = false;
             if (isDef(parent.excludes) && 
                 (parent.excludes.indexOf(r.flowUUID) >= 0 || parent.excludes.indexOf(r.flowName) >= 0)) doIt = false;
+
+            if (isDef(parent.excludeNeverExecuted) && (parent.excludeNeverExecuted)) {
+                if(ow.waf.cbpm.getFlowInstances(aAF, r.flowUUID).length === 0) doIt = false;
+            }
 
             if (doIt) {
                 nattrmon.useObject(aKey, (aAF) => {
