@@ -8,6 +8,13 @@
  * \
  *    - url          (String) The URL to the Presto Coordinator.\
  *    - attrTemplate (String) The attribute template where to store the result.\
+ *    - stateExlude  (Array) Exclude queries in a given state, defaults to bring everything.\
+ *    - stateInclude (Array) Include queries in a given state, defaults to include all states.\
+ *    - queryTypeInclude (Array) Include specific query types, defaults to include everything.\
+ *    - queryTypeExclude (Array) Exclude specific query types, defaults to not exclude any type.\
+ *    - errorTypeInclude (Array) Include specific error types, default to include all types.\ 
+ *    - errorTypeExclude (Array) Exclude specific error types, defaults to not exclude any type.\
+ *    - howLongAgo   (Integer) Exclude queries started long than X minutes ago, defaults to 3 days.\   
  * \
  * </odoc>
  */
@@ -20,6 +27,34 @@ var nInput_PrestoQueries = function(aMap) {
 
     if (isUnDef(this.params.attrTemplate)) this.params.attrTemplate = "Presto/Queries";
 
+    if (isUnDef(this.params.stateInclude)) {
+        this.params.stateInclude = [];
+    } 
+    
+    if (isUnDef(this.params.stateExclude)) {
+        this.params.stateExclude = [];
+    }
+
+    if (isUnDef(this.params.queryTypeInclude)) {
+        this.params.queryTypeInclude = [];
+    }
+
+    if (isUnDef(this.params.queryTypeExclude)) {
+        this.params.queryTypeExclude = [];
+    }
+
+    if (isUnDef(this.params.howLongAgo)) {
+        this.params.howLongAgo = 4320;
+    }
+
+    if (isUnDef(this.params.errorTypeInclude)) {
+        this.params.errorTypeInclude = [];
+    }
+
+    if (isUnDef(this.params.errorTypeExclude)) {
+        this.params.errorTypeExclude = [];
+    }
+
     nInput.call(this, this.input);
 };
 inherit(nInput_PrestoQueries, nInput);
@@ -29,6 +64,46 @@ nInput_PrestoQueries.prototype._get = function(aObj) {
     _$(aObj.url, "Presto url (" + af.toSLON(aObj) + ")").isString().$_()
 
     var info  = $rest({ login: aObj.user, pass: aObj.pass }).get(aObj.url + "/v1/query")
+
+    if(aObj.stateInclude.length > 0) {
+        var sAux = [];            
+        for(i in aObj.stateInclude) {
+            sAux = sAux.concat($from(info).equals("state", aObj.stateInclude[i]).select());
+    }
+    info = sAux;
+    } else if(aObj.stateExclude.length > 0) {            
+        for(i in aObj.stateExclude) {
+            info = $from(info).notEquals("state", aObj.stateExclude[i]).select();
+        }
+    }
+
+    if(aObj.queryTypeInclude.length > 0) {
+        var sAux = [];
+        for(i in aObj.queryTypeInclude) {
+            sAux = sAux.concat($from(info).equals("queryType", aObj.queryTypeInclude[i]).select());
+    }
+    info = sAux;
+    } else if(aObj.queryTypeExclude.length > 0) {
+        for(i in aObj.queryTypeExclude) {
+            info = $from(info).notEquals("queryType", aObj.queryTypeExclude[i]).select();
+        }
+    }
+
+    if(aObj.errorTypeInclude.length > 0) {
+        var sAux = [];
+        for(i in aObj.errorTypeInclude) {
+            sAux = sAux.concat($from(info).equals("errorType", aObj.errorTypeInclude[i].toUpperCase()).select());
+    }
+    info = sAux;
+    } else if(aObj.errorTypeExclude.length > 0) {
+        for(i in aObj.errorTypeExclude) {
+            info = $from(info).notEquals("errorType", aObj.errorTypeExclude[i].toUpperCase()).select();
+        }
+    }
+    
+    if(isDef(aObj.howLongAgo)) {
+        info = $from(info).where(q => ow.format.dateDiff.inMinutes(new Date(q.queryStats.createTime), new Date()) < aObj.howLongAgo).select(); 
+    }
 
     return info.map(q => ({
         key          : aObj.key,
@@ -40,6 +115,7 @@ nInput_PrestoQueries.prototype._get = function(aObj) {
         createTime   : new Date(q.queryStats.createTime),
         endTime      : new Date(q.queryStats.endTime),
         totalTimeMs  : (isDef(q.queryStats.createTime) ? (new Date((isDef(q.queryStats.endTime) ? q.queryStats.endTime : __)).getTime() - (new Date(q.queryStats.createTime)).getTime()) : __),
+        "howLongAgo (Min)": ow.format.dateDiff.inMinutes(new Date(q.queryStats.createTime), new Date()),
         queryType    : q.queryType,
         cumTotalMem  : q.queryStats.cumulativeTotalMemory 
     }))
