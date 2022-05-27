@@ -31,6 +31,14 @@ inherit(nInput_CBPMFlowManager, nInput);
 nInput_CBPMFlowManager.prototype.__get = function (aKey, aExtra) {
    var ret = {};
 
+   var fnClass = m => {
+      var r = $from(Object.keys(m.Services))
+          .starts("wedo.cbpm.services.flow.FlowManager")
+
+      if (r.none()) return __
+      return r.at(0)
+  }
+   
    try {
       var obj;
       var parent = this;
@@ -50,10 +58,11 @@ nInput_CBPMFlowManager.prototype.__get = function (aKey, aExtra) {
          });
       }
 
+      var fnC = fnClass(obj)
       if (isDef(obj.Services) &&
-          isDef(obj.Services["wedo.cbpm.services.flow.FlowManager"]) &&
-          isDef(obj.Services["wedo.cbpm.services.flow.FlowManager"]["CBPM.FlowManager"])) {
-            obj = obj.Services["wedo.cbpm.services.flow.FlowManager"]["CBPM.FlowManager"];
+          isDef(fnC) &&
+          isDef(obj.Services[fnC]["CBPM.FlowManager"])) {
+            obj = obj.Services[fnC]["CBPM.FlowManager"];
             delete obj.RunningFlows;
             traverse(obj, (aK, aV, aP, aO) => { if (aK == "ClassName") delete aO[aK] });
             obj = ow.obj.flatMap(obj);

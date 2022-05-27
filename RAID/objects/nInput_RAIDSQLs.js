@@ -35,6 +35,14 @@ nInput_RAIDSQLs.prototype.__get = function (aKey, aExtra) {
         var obj;
         var parent = this;
 
+        var fnClass = m => {
+            var r = $from(Object.keys(m.Services))
+                .starts("wedo.jaf.services.connector.registry.ConnectorInfoRegistryManagerBase")
+      
+            if (r.none()) return __
+            return r.at(0)
+        }
+
         if (isBoolean(parent.useCache)) {
             var res = $cache("nattrmon::" + aKey).get({ op: "StatusReport", args: {} });
             if (isMap(res) && isDef(res.__error)) throw res.__error;
@@ -50,10 +58,11 @@ nInput_RAIDSQLs.prototype.__get = function (aKey, aExtra) {
             });
         }
 
+        var fnC = fnClass(obj)
         if (isDef(obj.Services) &&
-            isDef(obj.Services["wedo.jaf.services.connector.registry.ConnectorInfoRegistryManagerBase"]) &&
-            isDef(obj.Services["wedo.jaf.services.connector.registry.ConnectorInfoRegistryManagerBase"]["AF.ConnectorInfoRegistryManager"])) {
-            var tobj = obj.Services["wedo.jaf.services.connector.registry.ConnectorInfoRegistryManagerBase"]["AF.ConnectorInfoRegistryManager"].Database;
+            isDef(fnC) &&
+            isDef(obj.Services[fnC]["AF.ConnectorInfoRegistryManager"])) {
+            var tobj = obj.Services[fnC]["AF.ConnectorInfoRegistryManager"].Database;
 
             $from(tobj)
             .select(r => {
@@ -82,8 +91,8 @@ nInput_RAIDSQLs.prototype.__get = function (aKey, aExtra) {
         }
 
         if (isDef(obj.Services) &&
-            isDef(obj.Services["wedo.jaf.services.database.ConnectionManagerBase"])) {
-            var tobj = obj.Services["wedo.jaf.services.database.ConnectionManagerBase"];
+            isDef(obj.Services[fnC])) {
+            var tobj = obj.Services[fnC];
 
             $from(tobj)
             .select(r => {

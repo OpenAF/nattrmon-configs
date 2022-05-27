@@ -35,6 +35,14 @@
        var obj;
        var parent = this;
        
+       var fnClass = m => {
+         var r = $from(Object.keys(m.Services))
+             .starts("wedo.jaf.services.expression.ExpressionEngineFactoryBase")
+   
+         if (r.none()) return __
+         return r.at(0)
+     }
+
        if (isBoolean(parent.useCache)) {
           var res = $cache("nattrmon::" + aKey).get({ op: "StatusReport", args: {} });
           if (isMap(res) && isDef(res.__error)) throw res.__error;
@@ -50,10 +58,11 @@
           });
        }
  
+       var fnC = fnClass(obj)
        if (isDef(obj.Services) &&
-           isDef(obj.Services["wedo.jaf.services.expression.ExpressionEngineFactoryBase"]) &&
-           isDef(obj.Services["wedo.jaf.services.expression.ExpressionEngineFactoryBase"]["AF.ExpressionEngineFactory"])) {
-             obj = obj.Services["wedo.jaf.services.expression.ExpressionEngineFactoryBase"]["AF.ExpressionEngineFactory"];
+           isDef(fnC) &&
+           isDef(obj.Services[fnC]["AF.ExpressionEngineFactory"])) {
+             obj = obj.Services[fnC]["AF.ExpressionEngineFactory"];
              if (isDef(obj.WELParserCache)) obj = obj.WELParserCache; else obj = __;
        } else {
           obj = {};

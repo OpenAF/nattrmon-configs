@@ -35,6 +35,14 @@
        var obj;
        var parent = this;
        
+       var fnClass = m => {
+         var r = $from(Object.keys(m.Services))
+             .starts("wedo.datamodel.generator.services.QueryGeneratorManager")
+   
+         if (r.none()) return __
+         return r.at(0)
+     }
+
        if (isBoolean(parent.useCache)) {
           var res = $cache("nattrmon::" + aKey).get({ op: "StatusReport", args: {} });
           if (isMap(res) && isDef(res.__error)) throw res.__error;
@@ -50,10 +58,11 @@
           });
        }
  
+       var fnC = fnClass(obj)
        if (isDef(obj.Services) &&
-           isDef(obj.Services["wedo.datamodel.generator.services.QueryGeneratorManager"]) &&
-           isDef(obj.Services["wedo.datamodel.generator.services.QueryGeneratorManager"]["DM.QueryGeneratorManager"])) {
-             obj = obj.Services["wedo.datamodel.generator.services.QueryGeneratorManager"]["DM.QueryGeneratorManager"];
+           isDef(fnC) &&
+           isDef(obj.Services[fnC]["DM.QueryGeneratorManager"])) {
+             obj = obj.Services[fnC]["DM.QueryGeneratorManager"];
              traverse(obj, (aK, aV, aP, aO) => { if (aK == "ClassName") delete aO[aK] });
              obj = ow.obj.flatMap(obj);
        } else {

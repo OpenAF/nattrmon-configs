@@ -38,11 +38,20 @@ nInput_RAIDStatus_DB.prototype.__getData = function (aKey, scope) {
     try {
         var parent = this;
 
+        var fnClass = m => {
+            var r = $from(Object.keys(m.Services))
+                .starts("wedo.jaf.services.database.ConnectionManagerBase")
+      
+            if (r.none()) return __
+            return r.at(0)
+        }
+
         if (isDef(aKey)) {
             if (isBoolean(parent.params.useCache) && parent.params.useCache) {
                 var res = $cache("nattrmon::" + aKey).get({ op: "StatusReport", args: {} });
+                var fnC = fnClass(res)
                 if (isMap(res) && isDef(res.__error)) throw res.__error;
-                if (isMap(res) && isDef(res.Services) && isDef(res.Services["wedo.jaf.services.database.ConnectionManagerBase"])) {
+                if (isMap(res) && isDef(res.Services) && isDef(fnC)) {
                     res = res.Services["wedo.jaf.services.database.ConnectionManagerBase"];
                     parseResult = true;
                     ses = res;
@@ -53,8 +62,9 @@ nInput_RAIDStatus_DB.prototype.__getData = function (aKey, scope) {
                 nattrmon.useObject(aKey, s => {
                     try {
                         ses = s.exec("StatusReport", {});
-                        if (isMap(ses) && isDef(ses.Services) && isDef(ses.Services["wedo.jaf.services.database.ConnectionManagerBase"])) {
-                            ses = ses.Services["wedo.jaf.services.database.ConnectionManagerBase"];
+                        var fnC = fnClass(ses)
+                        if (isMap(ses) && isDef(ses.Services) && isDef(ses.Services[fnC])) {
+                            ses = ses.Services[fnC];
                             parseResult = true;
                             return true;
                         } else {
@@ -68,9 +78,10 @@ nInput_RAIDStatus_DB.prototype.__getData = function (aKey, scope) {
             }
         } else {
             try {
-                ses = s.exec("StatusReport", {}).Services["wedo.jaf.services.database.ConnectionManagerBase"];
-                if (isMap(ses) && isDef(ses.Services) && isDef(ses.Services["wedo.jaf.services.database.ConnectionManagerBase"])) {
-                    ses = ses.Services["wedo.jaf.services.database.ConnectionManagerBase"];
+                ses = s.exec("StatusReport", {})
+                var fnC = fnClass(ses)
+                if (isMap(ses) && isDef(ses.Services) && isDef(fnC)) {
+                    ses = ses.Services[fnC];
                     parseResult = true;
                 }
             } catch (e) {

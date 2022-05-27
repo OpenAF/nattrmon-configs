@@ -35,6 +35,14 @@ nInput_ProcessManager.prototype.__get = function (aKey, aExtra) {
         var obj;
         var parent = this;
 
+        var fnClass = m => {
+            var r = $from(Object.keys(m.Services))
+                .starts("wedo.jaf.services.process.ProcessManagerBase")
+      
+            if (r.none()) return __
+            return r.at(0)
+        }
+
         if (isBoolean(parent.useCache)) {
             var res = $cache("nattrmon::" + aKey).get({ op: "StatusReport", args: {} });
             if (isMap(res) && isDef(res.__error)) throw res.__error;
@@ -50,10 +58,11 @@ nInput_ProcessManager.prototype.__get = function (aKey, aExtra) {
             });
         }
 
+        var fnC = fnClass(obj)
         if (isDef(obj.Services) &&
-            isDef(obj.Services["wedo.jaf.services.process.ProcessManagerBase"]) &&
-            isDef(obj.Services["wedo.jaf.services.process.ProcessManagerBase"].ProcessStatusManager)) {
-            obj = obj.Services["wedo.jaf.services.process.ProcessManagerBase"].ProcessStatusManager.ProcessReport;
+            isDef(fnC) &&
+            isDef(obj.Services[fnC].ProcessStatusManager)) {
+            obj = obj.Services[fnC].ProcessStatusManager.ProcessReport;
 
             obj = obj.map(r => {
                 traverse(r, (aK, aV, aP, aO) => { if (isMap(aV) && isDef(aV["__wedo__type__"])) aO[aK] = ow.format.fromWeDoDateToDate(aV) })

@@ -35,6 +35,14 @@ nInput_CBPMFlowStore.prototype.__get = function (aKey, aExtra) {
       var obj;
       var parent = this;
       
+      var fnClass = m => {
+         var r = $from(Object.keys(m.Services))
+             .starts("wedo.cbpm.services.flowstore.FlowStoreBase")
+   
+         if (r.none()) return __
+         return r.at(0)
+     }
+
       if (isBoolean(parent.useCache)) {
          var res = $cache("nattrmon::" + aKey).get({ op: "StatusReport", args: {} });
          if (isMap(res) && isDef(res.__error)) throw res.__error;
@@ -50,10 +58,12 @@ nInput_CBPMFlowStore.prototype.__get = function (aKey, aExtra) {
          });
       }
 
+      var fnC = fnClass(obj)
+
       if (isDef(obj.Services) &&
-          isDef(obj.Services["wedo.cbpm.services.flowstore.FlowStoreBase"]) &&
-          isDef(obj.Services["wedo.cbpm.services.flowstore.FlowStoreBase"]["CBPM.FlowStore"])) {
-            obj = obj.Services["wedo.cbpm.services.flowstore.FlowStoreBase"]["CBPM.FlowStore"];
+          isDef(fnC) &&
+          isDef(obj.Services[fnC]["CBPM.FlowStore"])) {
+            obj = obj.Services[fnC]["CBPM.FlowStore"];
             traverse(obj, (aK, aV, aP, aO) => { if (aK == "ClassName") delete aO[aK] });
             obj = ow.obj.flatMap(obj);
       } else {
