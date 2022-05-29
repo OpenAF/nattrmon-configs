@@ -52,11 +52,11 @@ nInput_RAIDStatus_DB.prototype.__getData = function (aKey, scope) {
                 var fnC = fnClass(res)
                 if (isMap(res) && isDef(res.__error)) throw res.__error;
                 if (isMap(res) && isDef(res.Services) && isDef(fnC)) {
-                    res = res.Services["wedo.jaf.services.database.ConnectionManagerBase"];
+                    res = res.Services[fnC];
                     parseResult = true;
                     ses = res;
                 } else {
-                    logErr("Error while retrieving connection manager base data using '" + aKey + "': " + e.message);
+                    logErr("Error while retrieving connection manager base data using '" + aKey);
                 }
             } else {
                 nattrmon.useObject(aKey, s => {
