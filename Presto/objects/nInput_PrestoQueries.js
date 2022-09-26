@@ -122,7 +122,7 @@ nInput_PrestoQueries.prototype._get = function(aObj) {
 }
 
 nInput_PrestoQueries.prototype.input = function(scope, args) {
-    var ret = {};
+    var ret = {}, res = {}
 
     try {
         // Let's check if chKeys is being used
