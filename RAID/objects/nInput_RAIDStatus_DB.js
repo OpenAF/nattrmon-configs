@@ -70,8 +70,8 @@ nInput_RAIDStatus_DB.prototype.__getData = function (aKey, scope) {
                         } else {
                             return false;
                         }
-                    } catch (e) {
-                        logErr("Error while retrieving connection manager base data using '" + aKey + "': " + e.message);
+                    } catch (e1) {
+                        logErr("Error while retrieving connection manager base data using '" + aKey + "': " + e1.message);
                         return false;
                     }
                 });
@@ -84,8 +84,8 @@ nInput_RAIDStatus_DB.prototype.__getData = function (aKey, scope) {
                     ses = ses.Services[fnC];
                     parseResult = true;
                 }
-            } catch (e) {
-                logErr("Error while retrieving connection manager base data: " + e.message);
+            } catch (e2) {
+                logErr("Error while retrieving connection manager base data: " + e2.message);
             }
         }
 
@@ -110,8 +110,8 @@ nInput_RAIDStatus_DB.prototype.__getData = function (aKey, scope) {
         } else {
             throw "can't parse results";
         }
-    } catch (e) {
-        logErr("Error while retrieving db connections data using '" + aKey + "': " + e.message);
+    } catch (e3) {
+        logErr("Error while retrieving db connections data using '" + aKey + "': " + e3.message);
     }
 
     return retSes;
