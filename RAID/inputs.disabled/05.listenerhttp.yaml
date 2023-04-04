@@ -1,0 +1,7 @@
+input:
+  name    : Input Listener HTTP
+  cron    : "*/5 * * * * *"
+  execFrom: nInput_ListenerHTTP
+  execArgs:
+    chKeys  : raidServers
+    useCache: raidCache 
