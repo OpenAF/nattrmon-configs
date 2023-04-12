@@ -1,0 +1,9 @@
+input:
+  name         : Input sessions summary
+  cron         : "*/1 * * * *"
+  waitForFinish: true
+  onlyOnEvent  : false
+  execFrom     : nInput_SessionsSummary
+  execArgs     :        
+    chKeys  : raidServers
+    useCache: raidCache
