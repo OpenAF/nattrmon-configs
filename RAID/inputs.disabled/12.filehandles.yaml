@@ -1,0 +1,9 @@
+input:
+  name    : Input file handles
+  execFrom: nInput_Shell
+  execArgs:
+    chKeys      : sshServers
+    parseJson   : true
+    attrtemplate: Server status/File Handles
+    cmd         : |          
+      echo "{ \"max_handles\": $(cat /proc/sys/fs/file-max), \"open_handles\": $(lsof 2> /dev/null | wc -l), \"user_open_handles\": $(lsof -u $(whoami) 2>/dev/null | wc -l), \"user_max_handles\": $(ulimit -n) }"
