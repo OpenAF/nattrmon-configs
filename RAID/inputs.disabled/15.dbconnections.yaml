@@ -1,0 +1,9 @@
+input:
+  name         : Input db connections
+  cron         : "*/1 * * * *"
+  waitForFinish: true
+  onlyOnEvent  : false
+  execFrom     : nInput_DBConnections
+  execArgs     :        
+    chKeys  : raidServers
+    useCache: raidCache
