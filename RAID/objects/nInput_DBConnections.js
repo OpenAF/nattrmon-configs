@@ -40,73 +40,73 @@ nInput_DBConnections.prototype.get = function(keyData, extra) {
     try {
         var aKey = keyData.key
         if (isDef(aKey)) {
-			if (isString(parent.params.useCache)) {
-				var ses = $cache("nattrmon::" + parent.params.useCache + "::" + aKey).get({ op: "StatusReport", args: { }})
-				if (isMap(ses) && isDef(ses.__error)) throw ses.__error
-				var fnC = fnClass(ses)
-				ses = (isDef(ses) ? ses = ses.Services[fnC]["AF.ConnectorInfoRegistryManager"].Database : [])
-				parseResult = true
-			} else {
-				nattrmon.useObject(aKey, s => {
-					try {
-						ses = s.exec("StatusReport", { });
-						if (isMap(ses) && isDef(ses.Services)) {
-							var fnC = fnClass(ses)
-							ses = (isDef(ses) ? ses = ses.Services[fnC]["AF.ConnectorInfoRegistryManager"].Database : [])
-							parseResult = true
-							return true
-						} else {
-							return false
-						}
-					} catch(e) {
-						logErr("nInput_DBConnections | Error while retrieving db connections using '" + aKey + "': " + e.message);
-						return false;
-					}
-				});
-			}
-		} else {
-			try {
-				ses = s.exec("StatusReport", { })
-				var fnC = fnClass(ses)
+            if (isString(parent.params.useCache)) {
+                var ses = $cache("nattrmon::" + parent.params.useCache + "::" + aKey).get({ op: "StatusReport", args: {} })
+                if (isMap(ses) && isDef(ses.__error)) throw ses.__error
+                var fnC = fnClass(ses)
+                ses = (isDef(ses) ? ses = ses.Services[fnC]["AF.ConnectorInfoRegistryManager"].Database : [])
+                parseResult = true
+            } else {
+                nattrmon.useObject(aKey, s => {
+                    try {
+                        ses = s.exec("StatusReport", {});
+                        if (isMap(ses) && isDef(ses.Services)) {
+                            var fnC = fnClass(ses)
+                            ses = (isDef(ses) ? ses = ses.Services[fnC]["AF.ConnectorInfoRegistryManager"].Database : [])
+                            parseResult = true
+                            return true
+                        } else {
+                            return false
+                        }
+                    } catch (e) {
+                        logErr("nInput_DBConnections | Error while retrieving db connections using '" + aKey + "': " + e.message);
+                        return false;
+                    }
+                });
+            }
+        } else {
+            try {
+                ses = s.exec("StatusReport", {})
+                var fnC = fnClass(ses)
                 if (isUnDef(fnC)) return true
                 if (isMap(ses) && isDef(ses.Services) && isDef(fnC)) {
                     ses = ses.Services[fnC];
                     ses = (isDef(ses) ? ses = ses["AF.ConnectorInfoRegistryManager"].Database : []);
                     parseResult = true;
                 }
-			} catch(e) {
-				logErr("nInput_DBConnections | Error while retrieving db connections using: " + e.message);
-			}
-		}
+            } catch (e) {
+                logErr("nInput_DBConnections | Error while retrieving db connections using: " + e.message);
+            }
+        }
 
         if (parseResult) {
             res = []
             $m4a(ses, "Name").forEach(r => {
                 res.push({
                     key: aKey,
-                    Name: r.Name, 
-                    Connections: r.Connections, 
-                    Active: r.Active, 
-                    "Average Time for Conns": r.AverageTimeForConns, 
-                    "Max Connections" : r.MaxConnections, 
-                    Fetches: r.Fetches, 
-                    "Average Wait": r.AverageWait, 
-                    "Pool out of conns" : r["N.PoolOutOfConns"], 
-                    "Wait list": r.WaitList.length, 
-                    "In use": r.InUse.length 
+                    Name: r.Name,
+                    Connections: r.Connections,
+                    Active: r.Active,
+                    "Average Time for Conns": r.AverageTimeForConns,
+                    "Max Connections": r.MaxConnections,
+                    Fetches: r.Fetches,
+                    "Average Wait": r.AverageWait,
+                    "Pool out of conns": r["N.PoolOutOfConns"],
+                    "Wait list": r.WaitList.length,
+                    "In use": r.InUse.length
                 })
             })
-		} else {
-			throw "nInput_DBConnections | can't parse results"
-		}
-    } catch(e) {
+        } else {
+            throw "nInput_DBConnections | can't parse results"
+        }
+    } catch (e) {
         logErr("nInput_DBConnections | " + e)
     }
 
-    return merge(res, extra)
+    return res
 }
 
-nInput_DBConnections.prototype.input = function(scope, args) {
+nInput_DBConnections.prototype.input = function (scope, args) {
     var ret = {}
 
     /*ret[templify(this.params.attrTemplate)] = {
@@ -116,7 +116,7 @@ nInput_DBConnections.prototype.input = function(scope, args) {
     if (isDef(this.params.chKeys)) {
         var arr = []
         $ch(this.params.chKeys).forEach((k, v) => {
-            arr.push(this.get(merge(k, v)))
+            arr = arr.concat(this.get(merge(k, v)))
         })
         ret[templify(this.params.attrTemplate, this.params)] = arr
     } else {

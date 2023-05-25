@@ -20,7 +20,7 @@ name: nAttrMon-configs
 main: ''
 mainJob: ''
 license: Apache 2.0 license
-version: '20230413'
+version: '20230524'
 dependencies:
   openaf: '>=20210721'
 files:
