@@ -28,7 +28,7 @@ jobs:
         
     # ------------------
     - name: Update opack
-      uses: actions/ojob-action@v3
+      uses: openaf/ojob-action@v3
       with:
         script: |
           $sh("opack genpack .")
@@ -38,7 +38,7 @@ jobs:
         
     # ---------------------
     - name: Commit and push
-      uses: actions/ojob-action@v3
+      uses: openaf/ojob-action@v3
       with:
         ojob: 'ojob.io/git/githubCheckIn'
         args: 'message=update\ pack'
