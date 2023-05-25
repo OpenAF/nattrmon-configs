@@ -31,9 +31,7 @@ jobs:
       uses: openaf/ojob-action@v3
       with:
         script: |
-          $sh("opack genpack .")
-          .prefix("opack")
-          .get()
+          oPack("genpack .")
         dist  : t8
         
     # ---------------------
