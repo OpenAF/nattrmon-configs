@@ -90,7 +90,7 @@ files:
 filesHash:
   .github/ISSUE_TEMPLATE/bug_report.md: 83d211c67c12e8c1f6e9f796cfd0cecbf5160e15
   .github/ISSUE_TEMPLATE/feature_request.md: f6867a2f0417fe89a0f2008730ee19dd38422021
-  .github/workflows/github-actions.yml: 282dc60515de6384b8677e0f2850c1bdc8a54a75
+  .github/workflows/github-actions.yml: 852af58e3ae6e19c19dd31cb97313a6d503f35aa
   ES/inputs.disabled/00.init.es.yaml: d0d9b4009a92573ee30e4d01fa4388ebf736ae16
   ES/inputs.disabled/01.es.status.yaml: 3f92c2cdc50ed9bb279e4679cb2ebb1ba05f6d84
   ES/inputs.disabled/02.es.indices.yaml: 45679210b3b51c1a7de0588ca528f023613dccc3
