@@ -37,6 +37,8 @@ jobs:
     # ---------------------
     - name: Commit and push
       uses: openaf/ojob-action@v3
+      env :
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         ojob: 'ojob.io/git/hub/contentIn'
         args: 'message="update\ pack" paths=".package.yaml"'
