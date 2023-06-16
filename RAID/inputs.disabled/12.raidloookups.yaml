@@ -1,0 +1,10 @@
+input:
+   name         : RAID Lookups
+   cron         : "*/5 * * * * *"
+   waitForFinish: true
+   onlyOnEvent  : true
+   execFrom     : nInput_RAIDLookups
+   execArgs     :
+     chKeys   : raidServers
+     excludeRE:
+     - "^LKP Test.+$"
