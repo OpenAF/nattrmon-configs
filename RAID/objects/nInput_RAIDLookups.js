@@ -5,7 +5,11 @@
  * You can create an input to get a list of existing RAID lookups with a map composed of:\
  *    - keys (a key string or an array of keys for an AF object)\
  *    - chKeys (a channel name for the keys of AF objects)\
- *    - excludeUnloaded (exclude Unloaded lk from output, defaults to false)\
+ *    - excludeUnloaded (exclude Unloaded lk from output, defaults to false)\ 
+ *    - include (array of lookup names to include)\
+ *    - exclude (array of lookup names to exclude)\
+ *    - includeRE (array of lookup names' reg exp to include)\
+ *    - excludeRE (array of lookup names' reg exp to exclude)\
  * \
  * </odoc>
  */
