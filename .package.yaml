@@ -49,6 +49,7 @@ files:
 - RAID/inputs.disabled/05.listenerhttp.yaml
 - RAID/inputs.disabled/05.processmanager.yaml
 - RAID/inputs.disabled/10.licence.yaml
+- RAID/inputs.disabled/12.raidloookups.yaml
 - RAID/inputs.disabled/13.RAIDSchedulers.yaml
 - RAID/inputs.disabled/15.dbconnections.yaml
 - RAID/inputs.disabled/15.sessionsummary.yaml
@@ -112,6 +113,7 @@ filesHash:
   RAID/inputs.disabled/05.listenerhttp.yaml: 9f3d18ac74be15543b2a3f32be226cc06a13cab9
   RAID/inputs.disabled/05.processmanager.yaml: 64f57680baf47f46e82d36929f693ceaaeed96ed
   RAID/inputs.disabled/10.licence.yaml: 099f7bdf9a56c5512608b18c35b81c395841c8a3
+  RAID/inputs.disabled/12.raidloookups.yaml: e53a2fccf4920feaa591a83014e47152a6779180
   RAID/inputs.disabled/13.RAIDSchedulers.yaml: 91e02536d8038be0138e6361eb3c986a2a036d92
   RAID/inputs.disabled/15.dbconnections.yaml: 36da22f6b42db430995fa12c4b063f16bcd41823
   RAID/inputs.disabled/15.sessionsummary.yaml: 4b858c6393d4e099280beec413c173b841d15479
