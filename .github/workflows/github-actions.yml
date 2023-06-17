@@ -27,19 +27,51 @@ jobs:
     - uses: actions/checkout@v2
         
     # ------------------
-    - name: Update opack
-      uses: openaf/ojob-action@v3
+    - name: Generate oPack
+      uses: openaf/ojob-action@v4
       with:
-        script: |
-          oPack("genpack .")
-        dist  : t8
+        script: oPack("genpack . --exclude .github")
+        dist  : 't8'
         
-    # ---------------------
-    - name: Commit and push
-      uses: openaf/ojob-action@v3
-      env :
+    # --------------------------
+    - name: Update version badge
+      uses: openaf/ojob-action@v4
+      with:
+        def : |
+          todo:
+          - Update badge with version
+
+          ojob:
+            opacks:
+            - Badgen
+
+          include:
+          - badgen.yaml
+
+          jobs:
+          # -------------------------------
+          - name: Update badge with version
+            from: Get version
+            to  :
+            - name: Badgen generate file
+              args: 
+                labelColor: grey3
+                color     : blue
+                icon      : "nattrmon.svg"
+                label     : "repo opack version"
+                file      : ".github/version.svg"
+
+          # -----------------
+          - name: Get version
+            exec: args.status = io.readFileYAML(".package.yaml").version
+        dist: 't8'
+        
+    # -------------
+    - name: Checkin
+      env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      uses: openaf/ojob-action@v4
       with:
         ojob: 'ojob.io/git/hub/contentIn'
-        args: 'message="update\ pack" paths=".package.yaml"'
-        dist: t8
+        args: 'message="Update\ package" title="Update\ package" paths=.github/version.svg,.package.yaml'
+        dist: 't8'
