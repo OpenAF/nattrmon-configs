@@ -31,6 +31,8 @@ files:
 - ES/objects/nInput_ESCluster.js
 - ES/objects/nInput_ESIndices.js
 - ES/objects/nInput_ESInit.js
+- K8S/inputs/01.k8smetrics.yaml
+- K8S/objects/nInput_K8SClusterMetrics.js
 - LICENSE
 - Pinot/objects/nInput_PinotInit.js
 - Pinot/objects/nInput_PinotMetrics.js
@@ -92,6 +94,8 @@ filesHash:
   ES/objects/nInput_ESCluster.js: bdc51d1038d1327dde60ae17331eb2bf393d2016
   ES/objects/nInput_ESIndices.js: 9780b939c22018f2a3ea5e7fbfbad0f408bda990
   ES/objects/nInput_ESInit.js: dddac678891ae9732b20e46fb64294d8e6d89eb1
+  K8S/inputs/01.k8smetrics.yaml: 1f34c2d03770aa38f350dc8ec9aae92263688c50
+  K8S/objects/nInput_K8SClusterMetrics.js: e6acdf559c2743459eb84644ba2ee93febd95b2d
   LICENSE: 7df059597099bb7dcf25d2a9aedfaf4465f72d8d
   Pinot/objects/nInput_PinotInit.js: a22cc8466b1128c8ad2f03e6a67635e4770677aa
   Pinot/objects/nInput_PinotMetrics.js: a7bde744de334abb979043f885e0a2af792aa1fd
