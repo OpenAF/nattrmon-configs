@@ -1,0 +1,12 @@
+input:
+  name    : K8S Cluster Metrics
+  cron    : "*/30 * * * * *"
+  execFrom: nInput_K8SClusterMetrics
+  execArgs:
+    #ns : namespace-1, namespace-2
+    #raw: true
+    #includeSA: true
+    #includeNode: true
+    #includeStats: true
+    timeout: 30000
+    #attrTemplate: K8S/Cluster Metrics

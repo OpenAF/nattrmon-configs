@@ -20,9 +20,9 @@ name: nAttrMon-configs
 main: ''
 mainJob: ''
 license: Apache 2.0 license
-version: '20230616'
+version: '20240226'
 dependencies:
-  openaf: '>=20210721'
+  openaf: '>=20231222'
 files:
 - .package.yaml
 - ES/inputs.disabled/00.init.es.yaml
