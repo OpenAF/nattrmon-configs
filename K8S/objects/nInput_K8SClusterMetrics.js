@@ -14,6 +14,49 @@
  *    - timeout      (Number)  Timeout (in ms) on the stats collected from each node (should be equal or less that the frequency of the input gathering)\
  *    - attrTemplate (String)  The attribute name template\
  * \
+ * At the Kubernetes level it's necessary to have the following permissions at the cluster level:\
+ * \
+ * apiVersion: rbac.authorization.k8s.io/v1\
+ * kind: ClusterRole\
+ * metadata:\
+ *   name: nattrmon\
+ *   namespace: my-namespace\
+ * rules:\
+ * - apiGroups:\
+ *   - ""\
+ *   - metrics.k8s.io\
+ *   resources:\
+ *   - pods\
+ *   - deployments\
+ *   - services\
+ *   - namespaces\
+ *   - nodes/proxy\
+ *   verbs:\
+ *   - get\
+ *   - list\
+ * - apiGroups:\
+ *   - ""\
+ *   resources:\
+ *   - pods/exec\
+ *   - pods/attach\
+ *   verbs:\
+ *   - create\
+ *   - get\
+ * \
+ * apiVersion: rbac.authorization.k8s.io/v1\
+ * kind: ClusterRoleBinding\
+ * metadata:\
+ *   name: nattrmon\
+ *   namespace: my-namespace\
+ * roleRef:\
+ *   apiGroup: rbac.authorization.k8s.io\
+ *   kind: ClusterRole\
+ *   name: nattrmon\
+ * subjects:\
+ * - kind: ServiceAccount\
+ *   name: nattrmon\
+ *   namespace: my-namespace\
+ * \
  * </odoc>
  */
 var nInput_K8SClusterMetrics = function(aMap) {
