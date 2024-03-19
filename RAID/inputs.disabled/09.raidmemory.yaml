@@ -1,0 +1,9 @@
+input: 	
+   name         : RAID Memory
+   cron         : "*/30 * * * * *"
+   waitForFinish: true
+   onlyOnEvent  : true
+   execFrom     : nInput_RAIDMemory
+   execArgs     : 
+      chKeys            : raidServers
+      #extraMemoryDetails: true
