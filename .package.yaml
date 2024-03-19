@@ -45,6 +45,12 @@ files:
 - Presto/objects/nInput_PrestoInit.js
 - Presto/objects/nInput_PrestoQueries.js
 - RAID/inputs.disabled/00.init.yaml
+- RAID/inputs.disabled/05.files.processed.day.yaml
+- RAID/inputs.disabled/05.files.processed.hour.yaml
+- RAID/inputs.disabled/05.files.processed.twice.yaml
+- RAID/inputs.disabled/05.files.processederror.day.yaml
+- RAID/inputs.disabled/05.files.processederror.hour.yaml
+- RAID/inputs.disabled/05.files.processing.backlog.yaml
 - RAID/inputs.disabled/05.listenerhttp.yaml
 - RAID/inputs.disabled/05.processmanager.yaml
 - RAID/inputs.disabled/10.licence.yaml
@@ -52,6 +58,7 @@ files:
 - RAID/inputs.disabled/13.RAIDSchedulers.yaml
 - RAID/inputs.disabled/15.dbconnections.yaml
 - RAID/inputs.disabled/15.sessionsummary.yaml
+- RAID/objects.assets/ninputfilesprocessed/nInput_FilesProcessed_config.yml
 - RAID/objects/nInput_AFPing.js
 - RAID/objects/nInput_BPMDebugChecks.js
 - RAID/objects/nInput_BPMNRunningFlows.js
@@ -62,6 +69,7 @@ files:
 - RAID/objects/nInput_CBPMSemaphores.js
 - RAID/objects/nInput_DBConnections.js
 - RAID/objects/nInput_DMPerformance.js
+- RAID/objects/nInput_FilesProcessed.js
 - RAID/objects/nInput_Licence.js
 - RAID/objects/nInput_ListenerHTTP.js
 - RAID/objects/nInput_ProcessManager.js
@@ -108,6 +116,12 @@ filesHash:
   Presto/objects/nInput_PrestoInit.js: 37d796f331f3887bd78fe8f067aacd6d7b264ba6
   Presto/objects/nInput_PrestoQueries.js: 99d02e2880b96ebf7819f896e6258c6635e479ca
   RAID/inputs.disabled/00.init.yaml: 95bf62efc02cee480494ab426481de586b662b64
+  RAID/inputs.disabled/05.files.processed.day.yaml: eeb4ebc58f96c0668bae6f346c837c001015f554
+  RAID/inputs.disabled/05.files.processed.hour.yaml: ee9e240f48780c55e57b26cfd3040d0eb1056fe1
+  RAID/inputs.disabled/05.files.processed.twice.yaml: 21fee6d271991453cd83063d7969a086aabacf9d
+  RAID/inputs.disabled/05.files.processederror.day.yaml: 18768bbe3b18c494225cedd51b3a77480736ad24
+  RAID/inputs.disabled/05.files.processederror.hour.yaml: 46178a8c2d8f7aa6e4d63cb1f7e1aeee0c92d3ce
+  RAID/inputs.disabled/05.files.processing.backlog.yaml: f6ed2a18301a91d1a7ce33d9881299dbffcc4b07
   RAID/inputs.disabled/05.listenerhttp.yaml: 9f3d18ac74be15543b2a3f32be226cc06a13cab9
   RAID/inputs.disabled/05.processmanager.yaml: 64f57680baf47f46e82d36929f693ceaaeed96ed
   RAID/inputs.disabled/10.licence.yaml: 099f7bdf9a56c5512608b18c35b81c395841c8a3
@@ -115,6 +129,7 @@ filesHash:
   RAID/inputs.disabled/13.RAIDSchedulers.yaml: 91e02536d8038be0138e6361eb3c986a2a036d92
   RAID/inputs.disabled/15.dbconnections.yaml: 36da22f6b42db430995fa12c4b063f16bcd41823
   RAID/inputs.disabled/15.sessionsummary.yaml: 4b858c6393d4e099280beec413c173b841d15479
+  RAID/objects.assets/ninputfilesprocessed/nInput_FilesProcessed_config.yml: b67359898801cfb73cacd31d16c23463d4b4ef08
   RAID/objects/nInput_AFPing.js: c88598e75deb073715ed011272ae7ffb46962e8e
   RAID/objects/nInput_BPMDebugChecks.js: 6e1042ba95cc3374d3516be2202538529344769f
   RAID/objects/nInput_BPMNRunningFlows.js: 9e857ff89a690227ac550c4bf48480e2be05a0b3
@@ -125,6 +140,7 @@ filesHash:
   RAID/objects/nInput_CBPMSemaphores.js: 75a0892cdad21aee8762d6d1346548bf6d42b59b
   RAID/objects/nInput_DBConnections.js: 141211454b13c72338666058b6c311e33fc53fa7
   RAID/objects/nInput_DMPerformance.js: 588a31f70e1ad07a431bfb2e8db34ff50544878c
+  RAID/objects/nInput_FilesProcessed.js: 66538c2281edbbc8598a5f9d212f9c6e247384d4
   RAID/objects/nInput_Licence.js: fdfaa3b46093f7fed5a884e5c06fc01dc473a461
   RAID/objects/nInput_ListenerHTTP.js: f5fe62ade8072e0bd2cab1d7e2e4dd7674b17a7d
   RAID/objects/nInput_ProcessManager.js: b73515a2afdf60ad8f2419f6c8ee66be8695569b
