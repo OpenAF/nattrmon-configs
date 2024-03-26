@@ -53,6 +53,7 @@ files:
 - RAID/inputs.disabled/05.files.processing.backlog.yaml
 - RAID/inputs.disabled/05.listenerhttp.yaml
 - RAID/inputs.disabled/05.processmanager.yaml
+- RAID/inputs.disabled/09.raidmemory.yaml
 - RAID/inputs.disabled/10.licence.yaml
 - RAID/inputs.disabled/12.raidloookups.yaml
 - RAID/inputs.disabled/13.RAIDSchedulers.yaml
@@ -124,6 +125,7 @@ filesHash:
   RAID/inputs.disabled/05.files.processing.backlog.yaml: f6ed2a18301a91d1a7ce33d9881299dbffcc4b07
   RAID/inputs.disabled/05.listenerhttp.yaml: 9f3d18ac74be15543b2a3f32be226cc06a13cab9
   RAID/inputs.disabled/05.processmanager.yaml: 64f57680baf47f46e82d36929f693ceaaeed96ed
+  RAID/inputs.disabled/09.raidmemory.yaml: f1e99c65560e502d264f97192f391e318e7b9fec
   RAID/inputs.disabled/10.licence.yaml: 099f7bdf9a56c5512608b18c35b81c395841c8a3
   RAID/inputs.disabled/12.raidloookups.yaml: e53a2fccf4920feaa591a83014e47152a6779180
   RAID/inputs.disabled/13.RAIDSchedulers.yaml: 91e02536d8038be0138e6361eb3c986a2a036d92
@@ -146,7 +148,7 @@ filesHash:
   RAID/objects/nInput_ProcessManager.js: b73515a2afdf60ad8f2419f6c8ee66be8695569b
   RAID/objects/nInput_RAIDGCMemory.js: 61db6bc880acfd8ce0845b2a604f403bc3f26730
   RAID/objects/nInput_RAIDLookups.js: 988b025c3480ccf305f4a60df41f071e45f8152a
-  RAID/objects/nInput_RAIDMemory.js: 5b941a58ef1b523d3f5825435ecfb72dabb7143c
+  RAID/objects/nInput_RAIDMemory.js: bce4c8ed301ee25a931c518eabf2718704de69fe
   RAID/objects/nInput_RAIDQueryManager.js: ea01538c24e3ebaa94e43cb694f07eb8a2888724
   RAID/objects/nInput_RAIDSQLs.js: 5aea5c8ad66ad398f369a2bb12bf74eecb4cba80
   RAID/objects/nInput_RAIDStatus_DB.js: e2ac0ac4904f892d7c2670ee5577b9021a660a45
