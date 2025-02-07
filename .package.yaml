@@ -104,7 +104,7 @@ filesHash:
   ES/objects/nInput_ESIndices.js: 9780b939c22018f2a3ea5e7fbfbad0f408bda990
   ES/objects/nInput_ESInit.js: dddac678891ae9732b20e46fb64294d8e6d89eb1
   K8S/inputs/01.k8smetrics.yaml: 1f34c2d03770aa38f350dc8ec9aae92263688c50
-  K8S/objects/nInput_K8SClusterMetrics.js: a3339607b3ae5e9336ca16089a035d2dc86f399d
+  K8S/objects/nInput_K8SClusterMetrics.js: 462053d62927953c807ccf13f16aaf6ed480bcad
   LICENSE: 7df059597099bb7dcf25d2a9aedfaf4465f72d8d
   Pinot/objects/nInput_PinotInit.js: a22cc8466b1128c8ad2f03e6a67635e4770677aa
   Pinot/objects/nInput_PinotMetrics.js: a7bde744de334abb979043f885e0a2af792aa1fd
