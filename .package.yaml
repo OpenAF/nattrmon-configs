@@ -20,7 +20,7 @@ name: nAttrMon-configs
 main: ''
 mainJob: ''
 license: Apache 2.0 license
-version: '20240319'
+version: '20250227'
 dependencies:
   openaf: '>=20231222'
 files:
@@ -31,8 +31,9 @@ files:
 - ES/objects/nInput_ESCluster.js
 - ES/objects/nInput_ESIndices.js
 - ES/objects/nInput_ESInit.js
-- K8S/inputs/01.k8smetrics.yaml
-- K8S/objects/nInput_K8SClusterMetrics.js
+- K8s/README.md
+- K8s/inputs/01.k8smetrics.yaml
+- K8s/objects/nInput_K8SClusterMetrics.js
 - LICENSE
 - Pinot/objects/nInput_PinotInit.js
 - Pinot/objects/nInput_PinotMetrics.js
@@ -103,8 +104,9 @@ filesHash:
   ES/objects/nInput_ESCluster.js: bdc51d1038d1327dde60ae17331eb2bf393d2016
   ES/objects/nInput_ESIndices.js: 9780b939c22018f2a3ea5e7fbfbad0f408bda990
   ES/objects/nInput_ESInit.js: dddac678891ae9732b20e46fb64294d8e6d89eb1
-  K8S/inputs/01.k8smetrics.yaml: 1f34c2d03770aa38f350dc8ec9aae92263688c50
-  K8S/objects/nInput_K8SClusterMetrics.js: 462053d62927953c807ccf13f16aaf6ed480bcad
+  K8s/README.md: 61308c7afc238e800838deaa86ba7be7ae928175
+  K8s/inputs/01.k8smetrics.yaml: 1f34c2d03770aa38f350dc8ec9aae92263688c50
+  K8s/objects/nInput_K8SClusterMetrics.js: a4768cedf972d996f973bad22e37a0b70a8f83fb
   LICENSE: 7df059597099bb7dcf25d2a9aedfaf4465f72d8d
   Pinot/objects/nInput_PinotInit.js: a22cc8466b1128c8ad2f03e6a67635e4770677aa
   Pinot/objects/nInput_PinotMetrics.js: a7bde744de334abb979043f885e0a2af792aa1fd
@@ -157,7 +159,7 @@ filesHash:
   RAID/objects/nInput_Sessions.js: 85cd8cd00f7f699a0fbbf96b979d09216ec8375d
   RAID/objects/nInput_SessionsSummary.js: bc3047c864d576f4f3bce62c2862ca337435d96b
   RAID/objects/nInput_WELCache.js: c4ed59d3592b5666a675f3b0d868f3d2742c09ab
-  README.md: a8db385e3efdb9b6ff37ad11a487ab7a5d18c4d2
+  README.md: 58b510a72573a5b3b031e8063aa0bb8b9a30ae91
   S3/inputs.disabled/00.init.s3.yaml: 57d4f3c5d529fa1c16cd50b100be85cae9a37476
   S3/inputs.disabled/01.s3.buckets.yaml: 25319586b67bc3bc5977f929a2a1690264db7315
   S3/inputs.disabled/05.minio.metrics.yaml: c6f2190823f1c44bcbef08444dbdfe00f86284e2
