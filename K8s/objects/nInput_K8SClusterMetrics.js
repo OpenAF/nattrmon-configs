@@ -31,6 +31,7 @@
  *   - services\
  *   - namespaces\
  *   - nodes/proxy\
+ *   - nodes\
  *   verbs:\
  *   - get\
  *   - list\
@@ -119,14 +120,16 @@ nInput_K8SClusterMetrics.prototype.kuletInfo = function(parent, args) {
         delete _c.rootfs.time
         delete _c.logs.time
         delete _c.cnt
+        delete _p["ephemeral-storage"].time
 
         var res = {
             usageNanoCores   : _c.cpu.usageNanoCores,
             usageCoreNanoSecs: _c.cpu.usageCoreNanoSeconds,
             memory           : _c.memory,
             storage          : {
-                rootfs: _c.rootfs,
-                logs  : _c.logs
+                rootfs   : _c.rootfs,
+                logs     : _c.logs,
+                ephemeral: _p["ephemeral-storage"]
             },
             network          : {
                 rxBytes : _p.network.rxBytes,
@@ -167,10 +170,10 @@ nInput_K8SClusterMetrics.prototype.get = function() {
                             startTime: ow.format.timeago(rpo.metadata.creationTimestamp),
                             status: rpo.status.phase,
                             container: rc.name,
-                            limitCPU  : isUnDef(rc.resources) || isUnDef(rc.resources.limits)   || $from(rc.resources.limits).equals("key", "cpu").none()      ? null : parent.convValue($from(rc.resources.limits).equals("key", "cpu").at(0).value.amount      + $from(rc.resources.limits).equals("key", "cpu").at(0).value.format),
-                            limitMEM  : isUnDef(rc.resources) || isUnDef(rc.resources.limits)   || $from(rc.resources.limits).equals("key", "memory").none()   ? null : parent.convValue($from(rc.resources.limits).equals("key", "memory").at(0).value.amount   + $from(rc.resources.limits).equals("key", "memory").at(0).value.format, true),
-                            requestCPU: isUnDef(rc.resources) || isUnDef(rc.resources.requests) || $from(rc.resources.requests).equals("key", "cpu").none()    ? null : parent.convValue($from(rc.resources.requests).equals("key", "cpu").at(0).value.amount    + $from(rc.resources.requests).equals("key", "cpu").at(0).value.format),
-                            requestMEM: isUnDef(rc.resources) || isUnDef(rc.resources.requests) || $from(rc.resources.requests).equals("key", "memory").none() ? null : parent.convValue($from(rc.resources.requests).equals("key", "memory").at(0).value.amount + $from(rc.resources.requests).equals("key", "memory").at(0).value.format, true)
+                            limitCPU  : isUnDef(rc.resources) || isUnDef(rc.resources.limits)   || $from(rc.resources.limits).equals("key", "cpu").none()      ? __ : parent.convValue($from(rc.resources.limits).equals("key", "cpu").at(0).value.amount      + $from(rc.resources.limits).equals("key", "cpu").at(0).value.format),
+                            limitMEM  : isUnDef(rc.resources) || isUnDef(rc.resources.limits)   || $from(rc.resources.limits).equals("key", "memory").none()   ? __ : parent.convValue($from(rc.resources.limits).equals("key", "memory").at(0).value.amount   + $from(rc.resources.limits).equals("key", "memory").at(0).value.format, true),
+                            requestCPU: isUnDef(rc.resources) || isUnDef(rc.resources.requests) || $from(rc.resources.requests).equals("key", "cpu").none()    ? __ : parent.convValue($from(rc.resources.requests).equals("key", "cpu").at(0).value.amount    + $from(rc.resources.requests).equals("key", "cpu").at(0).value.format),
+                            requestMEM: isUnDef(rc.resources) || isUnDef(rc.resources.requests) || $from(rc.resources.requests).equals("key", "memory").none() ? __ : parent.convValue($from(rc.resources.requests).equals("key", "memory").at(0).value.amount + $from(rc.resources.requests).equals("key", "memory").at(0).value.format, true)
                         }
                         if (parent.params.includeSA)    _d.svcAccount = rpo.spec.serviceAccountName || rpo.spec.serviceAccount
                         if (parent.params.includeNode)  _d.node       = rpo.spec.nodeName
