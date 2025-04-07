@@ -104,9 +104,10 @@ nInput_K8SClusterMetrics.prototype.kuletInfo = function(parent, args) {
     .ttl(parent.timeout)
     .fn(k => {
         if (isDef(k) && isDef(k.node)) {
-            var _k = new Kube()
-            var res = jsonParse( _k.client.raw("/api/v1/nodes/" + k.node + "/proxy/stats/summary").toString() )
-            _k.close()
+            //var _k = new Kube()
+            var res = $kube().getNodeMetrics(k.node)
+            //var res = jsonParse( _k.client.raw("/api/v1/nodes/" + k.node + "/proxy/stats/summary").toString() )
+            //_k.close()
             return res
         }
     })
