@@ -20,7 +20,7 @@ name: nAttrMon-configs
 main: ''
 mainJob: ''
 license: Apache 2.0 license
-version: '20250227'
+version: '20250406'
 dependencies:
   openaf: '>=20231222'
 files:
@@ -106,7 +106,7 @@ filesHash:
   ES/objects/nInput_ESInit.js: dddac678891ae9732b20e46fb64294d8e6d89eb1
   K8s/README.md: 61308c7afc238e800838deaa86ba7be7ae928175
   K8s/inputs/01.k8smetrics.yaml: 1f34c2d03770aa38f350dc8ec9aae92263688c50
-  K8s/objects/nInput_K8SClusterMetrics.js: a4768cedf972d996f973bad22e37a0b70a8f83fb
+  K8s/objects/nInput_K8SClusterMetrics.js: 38b81c675af049d2060e1dcced3179e385ac6c15
   LICENSE: 7df059597099bb7dcf25d2a9aedfaf4465f72d8d
   Pinot/objects/nInput_PinotInit.js: a22cc8466b1128c8ad2f03e6a67635e4770677aa
   Pinot/objects/nInput_PinotMetrics.js: a7bde744de334abb979043f885e0a2af792aa1fd
