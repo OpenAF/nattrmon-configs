@@ -18,13 +18,13 @@ jobs:
     steps  :
     # --------------------------
     - name: Cache OpenAF runtime
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         key : oaf-t8
         path: /tmp/oaf
         
     # -------------------------
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
         
     # ------------------
     - name: Generate oPack
