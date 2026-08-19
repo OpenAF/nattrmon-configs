@@ -1,0 +1,19 @@
+kind: input
+constructor: nInput_SessionsSummary
+title: SessionsSummary
+description: Configuration metadata for nInput_SessionsSummary.
+examples:
+  - ../nattrmon-configs/RAID/inputs.disabled/15.sessionsummary.yaml
+arguments:
+  - name: attrTemplate
+    type: any
+    description: Configuration option read by nInput_SessionsSummary.
+    example: Category/Name
+  - name: chKeys
+    type: any
+    description: Configuration option read by nInput_SessionsSummary.
+    example: nattrmon::keys
+  - name: useCache
+    type: any
+    description: Configuration option read by nInput_SessionsSummary.
+    example: {}

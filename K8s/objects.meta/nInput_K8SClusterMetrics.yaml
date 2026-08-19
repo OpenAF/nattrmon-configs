@@ -1,0 +1,42 @@
+kind: input
+constructor: nInput_K8SClusterMetrics
+title: Kubernetes cluster metrics
+description: Collects pod container CPU, memory, and storage statistics from a Kubernetes cluster.
+examples:
+  - K8s/inputs/01.k8smetrics.yaml
+arguments:
+  - name: ns
+    type: string
+    description: Comma-separated namespaces to collect; omit for all accessible namespaces.
+    example: default,monitoring
+  - name: raw
+    type: boolean
+    default: true
+    description: Convert Kubernetes CPU and byte abbreviations to numeric values.
+    example: true
+  - name: includeSA
+    type: boolean
+    default: true
+    description: Include the pod service-account name.
+    example: true
+  - name: includeNode
+    type: boolean
+    default: true
+    description: Include the pod node name.
+    example: true
+  - name: includeStats
+    type: boolean
+    default: true
+    description: Include additional pod statistics.
+    example: true
+  - name: timeout
+    type: integer
+    default: 30000
+    unit: milliseconds
+    description: Maximum time for per-node metric collection.
+    example: 30000
+  - name: attrTemplate
+    type: string
+    default: K8S/Cluster Metrics
+    description: Attribute name template for collected metrics.
+    example: K8S/Cluster Metrics

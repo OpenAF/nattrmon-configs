@@ -1,0 +1,10 @@
+kind: input
+constructor: nInput_PrestoInit
+title: PrestoInit
+description: Configuration metadata for nInput_PrestoInit.
+examples: []
+arguments:
+  - name: options
+    type: any
+    description: Configuration option read by nInput_PrestoInit.
+    example: {}

@@ -28,13 +28,20 @@ files:
 - ES/inputs.disabled/00.init.es.yaml
 - ES/inputs.disabled/01.es.status.yaml
 - ES/inputs.disabled/02.es.indices.yaml
+- ES/objects.meta/nInput_ESCluster.yaml
+- ES/objects.meta/nInput_ESIndices.yaml
+- ES/objects.meta/nInput_ESInit.yaml
 - ES/objects/nInput_ESCluster.js
 - ES/objects/nInput_ESIndices.js
 - ES/objects/nInput_ESInit.js
 - K8s/README.md
 - K8s/inputs/01.k8smetrics.yaml
+- K8s/objects.meta/nInput_K8SClusterMetrics.yaml
 - K8s/objects/nInput_K8SClusterMetrics.js
 - LICENSE
+- OBJECTS-METADATA.md
+- Pinot/objects.meta/nInput_PinotInit.yaml
+- Pinot/objects.meta/nInput_PinotMetrics.yaml
 - Pinot/objects/nInput_PinotInit.js
 - Pinot/objects/nInput_PinotMetrics.js
 - Presto/inputs.disabled/00.presto.init.yaml
@@ -42,6 +49,9 @@ files:
 - Presto/inputs.disabled/02.presto.queries.yaml
 - Presto/inputs.disabled/03.presto.endpoint.yaml
 - Presto/kibana/dashboard--nAttrMon_Presto.ndjson
+- Presto/objects.meta/nInput_PrestoCoordinator.yaml
+- Presto/objects.meta/nInput_PrestoInit.yaml
+- Presto/objects.meta/nInput_PrestoQueries.yaml
 - Presto/objects/nInput_PrestoCoordinator.js
 - Presto/objects/nInput_PrestoInit.js
 - Presto/objects/nInput_PrestoQueries.js
@@ -61,6 +71,31 @@ files:
 - RAID/inputs.disabled/15.dbconnections.yaml
 - RAID/inputs.disabled/15.sessionsummary.yaml
 - RAID/objects.assets/ninputfilesprocessed/nInput_FilesProcessed_config.yml
+- RAID/objects.meta/nInput_AFPing.yaml
+- RAID/objects.meta/nInput_BPMDebugChecks.yaml
+- RAID/objects.meta/nInput_BPMNRunningFlows.yaml
+- RAID/objects.meta/nInput_CBPMDebugChecks.yaml
+- RAID/objects.meta/nInput_CBPMFlowManager.yaml
+- RAID/objects.meta/nInput_CBPMFlowStore.yaml
+- RAID/objects.meta/nInput_CBPMRunningFlows.yaml
+- RAID/objects.meta/nInput_CBPMSemaphores.yaml
+- RAID/objects.meta/nInput_DBConnections.yaml
+- RAID/objects.meta/nInput_DMPerformance.yaml
+- RAID/objects.meta/nInput_FilesProcessed.yaml
+- RAID/objects.meta/nInput_Licence.yaml
+- RAID/objects.meta/nInput_ListenerHTTP.yaml
+- RAID/objects.meta/nInput_ProcessManager.yaml
+- RAID/objects.meta/nInput_RAIDGCMemory.yaml
+- RAID/objects.meta/nInput_RAIDLookups.yaml
+- RAID/objects.meta/nInput_RAIDMemory.yaml
+- RAID/objects.meta/nInput_RAIDQueryManager.yaml
+- RAID/objects.meta/nInput_RAIDSQLs.yaml
+- RAID/objects.meta/nInput_RAIDStatus_DB.yaml
+- RAID/objects.meta/nInput_Schedulers.yaml
+- RAID/objects.meta/nInput_Semaphores.yaml
+- RAID/objects.meta/nInput_Sessions.yaml
+- RAID/objects.meta/nInput_SessionsSummary.yaml
+- RAID/objects.meta/nInput_WELCache.yaml
 - RAID/objects/nInput_AFPing.js
 - RAID/objects/nInput_BPMDebugChecks.js
 - RAID/objects/nInput_BPMNRunningFlows.js
@@ -90,10 +125,14 @@ files:
 - S3/inputs.disabled/00.init.s3.yaml
 - S3/inputs.disabled/01.s3.buckets.yaml
 - S3/inputs.disabled/05.minio.metrics.yaml
+- S3/objects.meta/nInput_MinIOMetrics.yaml
+- S3/objects.meta/nInput_S3Buckets.yaml
+- S3/objects.meta/nInput_S3Init.yaml
 - S3/objects/nInput_MinIOMetrics.js
 - S3/objects/nInput_S3Buckets.js
 - S3/objects/nInput_S3Init.js
 - Unix/inputs.disabled/12.filehandles.yaml
+- nAttrMon/objects.meta/nInput_nAttrMon.yaml
 - nAttrMon/objects/nInput_nAttrMon.js
 - utils/createConfig.yaml
 - utils/decomposeKibanaExport.yaml
@@ -101,13 +140,20 @@ filesHash:
   ES/inputs.disabled/00.init.es.yaml: d0d9b4009a92573ee30e4d01fa4388ebf736ae16
   ES/inputs.disabled/01.es.status.yaml: 3f92c2cdc50ed9bb279e4679cb2ebb1ba05f6d84
   ES/inputs.disabled/02.es.indices.yaml: 45679210b3b51c1a7de0588ca528f023613dccc3
+  ES/objects.meta/nInput_ESCluster.yaml: 331ee6f36c2ed795934119905c511f98980ca3db
+  ES/objects.meta/nInput_ESIndices.yaml: 5d040388a360ee3a195b45897e029f2130b4c30c
+  ES/objects.meta/nInput_ESInit.yaml: 91d41181c71c9bb331a0dc420e54196993900e3b
   ES/objects/nInput_ESCluster.js: bdc51d1038d1327dde60ae17331eb2bf393d2016
   ES/objects/nInput_ESIndices.js: 9780b939c22018f2a3ea5e7fbfbad0f408bda990
   ES/objects/nInput_ESInit.js: dddac678891ae9732b20e46fb64294d8e6d89eb1
   K8s/README.md: 61308c7afc238e800838deaa86ba7be7ae928175
   K8s/inputs/01.k8smetrics.yaml: 1f34c2d03770aa38f350dc8ec9aae92263688c50
+  K8s/objects.meta/nInput_K8SClusterMetrics.yaml: 1826cf133bbc623253da0ff91eff2773766a54b5
   K8s/objects/nInput_K8SClusterMetrics.js: 38b81c675af049d2060e1dcced3179e385ac6c15
   LICENSE: 7df059597099bb7dcf25d2a9aedfaf4465f72d8d
+  OBJECTS-METADATA.md: 21568a77c28eba90a3614809de90c2e3a8cff1f4
+  Pinot/objects.meta/nInput_PinotInit.yaml: 4378776a25b0a5f0bba7dcb89e72d064aee1800a
+  Pinot/objects.meta/nInput_PinotMetrics.yaml: cfa1e4b88f08933addd57f7272d3cbb3e1fee8b1
   Pinot/objects/nInput_PinotInit.js: a22cc8466b1128c8ad2f03e6a67635e4770677aa
   Pinot/objects/nInput_PinotMetrics.js: a7bde744de334abb979043f885e0a2af792aa1fd
   Presto/inputs.disabled/00.presto.init.yaml: 37d796f331f3887bd78fe8f067aacd6d7b264ba6
@@ -115,6 +161,9 @@ filesHash:
   Presto/inputs.disabled/02.presto.queries.yaml: 0b7e5075943f54656598a0ca809a2aaad1c97b28
   Presto/inputs.disabled/03.presto.endpoint.yaml: 3b74806b28e8837033ace890f8cec2aa4c122ec8
   Presto/kibana/dashboard--nAttrMon_Presto.ndjson: bfd741bb38d10f2e57f0916ef9f70df8d0ccd589
+  Presto/objects.meta/nInput_PrestoCoordinator.yaml: 00184af0950c6cd5f1f0808a2480f1e5651df153
+  Presto/objects.meta/nInput_PrestoInit.yaml: 1ec9f597e62feecd58cea268f654604752971a8b
+  Presto/objects.meta/nInput_PrestoQueries.yaml: b00e7287eed494356f43618b176b0535790045aa
   Presto/objects/nInput_PrestoCoordinator.js: ca6b3ea0f1dd72e26b9018d262d833451baf1e6d
   Presto/objects/nInput_PrestoInit.js: 37d796f331f3887bd78fe8f067aacd6d7b264ba6
   Presto/objects/nInput_PrestoQueries.js: 99d02e2880b96ebf7819f896e6258c6635e479ca
@@ -134,6 +183,31 @@ filesHash:
   RAID/inputs.disabled/15.dbconnections.yaml: 36da22f6b42db430995fa12c4b063f16bcd41823
   RAID/inputs.disabled/15.sessionsummary.yaml: 4b858c6393d4e099280beec413c173b841d15479
   RAID/objects.assets/ninputfilesprocessed/nInput_FilesProcessed_config.yml: b67359898801cfb73cacd31d16c23463d4b4ef08
+  RAID/objects.meta/nInput_AFPing.yaml: 54f7af6fa0058bb97573e1fd57108192a7bb5b56
+  RAID/objects.meta/nInput_BPMDebugChecks.yaml: 45cb51f62c5d253280a0cf3dbedab21652613d8a
+  RAID/objects.meta/nInput_BPMNRunningFlows.yaml: a8edcfefa52ecb513a543bf0f7c903b45f201876
+  RAID/objects.meta/nInput_CBPMDebugChecks.yaml: b402a676023d2038fae6b62d96972cafba0afded
+  RAID/objects.meta/nInput_CBPMFlowManager.yaml: 6b62ddc5a2a8fb073a144c5763bf5f7820d3fb89
+  RAID/objects.meta/nInput_CBPMFlowStore.yaml: 6485cd8bd90b0dd7b759ad337b61e5265bcafa74
+  RAID/objects.meta/nInput_CBPMRunningFlows.yaml: 77f0a0f3780a955ac06a92901b1c0e0e8cb88244
+  RAID/objects.meta/nInput_CBPMSemaphores.yaml: b789e4f3f0ef9ae4b1fe8ca62690391c3e789207
+  RAID/objects.meta/nInput_DBConnections.yaml: 55737d4ab80e7d496bf148f3f1d25b7ee66ff970
+  RAID/objects.meta/nInput_DMPerformance.yaml: 75ad6c9295b35665549f5dca92521daddf117205
+  RAID/objects.meta/nInput_FilesProcessed.yaml: 043aa608c7219cb2144f7ce08472fc7c943679e3
+  RAID/objects.meta/nInput_Licence.yaml: 1f94fe44e57caa5731a34e21b16880f9771f68a2
+  RAID/objects.meta/nInput_ListenerHTTP.yaml: c13b044e7c07f7d2fd959f08bad971542aef9805
+  RAID/objects.meta/nInput_ProcessManager.yaml: 4c171e85600ced702b233326b33991ea4e9c31f3
+  RAID/objects.meta/nInput_RAIDGCMemory.yaml: 2a4e3816b2db7712a4962f6a082eafe98bb33a31
+  RAID/objects.meta/nInput_RAIDLookups.yaml: a6593e28538668fe613ff94f4128bb61a9909468
+  RAID/objects.meta/nInput_RAIDMemory.yaml: 6ea2d634a6e9c6dcf449774aa3f16ebbe4799eb0
+  RAID/objects.meta/nInput_RAIDQueryManager.yaml: f806b6f05a7ca88b6d857075f6faf896c825fbcf
+  RAID/objects.meta/nInput_RAIDSQLs.yaml: 05493031d0ae73eb9f777bbe646875f3a864a8cc
+  RAID/objects.meta/nInput_RAIDStatus_DB.yaml: 0a78ddfb758494bcd7bb0e3d758550f4d4690ada
+  RAID/objects.meta/nInput_Schedulers.yaml: 27fa626ccd80b1d0423beafe7d7591a815f9f5f9
+  RAID/objects.meta/nInput_Semaphores.yaml: 28d876aaf9951c647940d4f1521c910880659661
+  RAID/objects.meta/nInput_Sessions.yaml: f0ca53564224a4732ebb0ab07f69c96eb4358d16
+  RAID/objects.meta/nInput_SessionsSummary.yaml: 80b365fb7650be2670c4253c9565f2826efc533d
+  RAID/objects.meta/nInput_WELCache.yaml: 3a9a364db83fba4dc9bdc6f836d9c4129e60dbfb
   RAID/objects/nInput_AFPing.js: c88598e75deb073715ed011272ae7ffb46962e8e
   RAID/objects/nInput_BPMDebugChecks.js: 6e1042ba95cc3374d3516be2202538529344769f
   RAID/objects/nInput_BPMNRunningFlows.js: 9e857ff89a690227ac550c4bf48480e2be05a0b3
@@ -159,14 +233,18 @@ filesHash:
   RAID/objects/nInput_Sessions.js: 85cd8cd00f7f699a0fbbf96b979d09216ec8375d
   RAID/objects/nInput_SessionsSummary.js: bc3047c864d576f4f3bce62c2862ca337435d96b
   RAID/objects/nInput_WELCache.js: c4ed59d3592b5666a675f3b0d868f3d2742c09ab
-  README.md: 58b510a72573a5b3b031e8063aa0bb8b9a30ae91
+  README.md: d41f2bb59f5b5e03d8585702f43ee17143faedea
   S3/inputs.disabled/00.init.s3.yaml: 57d4f3c5d529fa1c16cd50b100be85cae9a37476
   S3/inputs.disabled/01.s3.buckets.yaml: 25319586b67bc3bc5977f929a2a1690264db7315
   S3/inputs.disabled/05.minio.metrics.yaml: c6f2190823f1c44bcbef08444dbdfe00f86284e2
+  S3/objects.meta/nInput_MinIOMetrics.yaml: 1b310ba18c2ee356cbdc9ae87619c6ba5faf9738
+  S3/objects.meta/nInput_S3Buckets.yaml: fdcbf5931a40011e7d44aa3b0b1e5869323c67a4
+  S3/objects.meta/nInput_S3Init.yaml: be494448b34db312fda5a4523beacb8bb30c7975
   S3/objects/nInput_MinIOMetrics.js: 8cfc8979dc48f8052c8ef28a757323db2d1fc939
   S3/objects/nInput_S3Buckets.js: 1d57cb21c7d82dc2a2cc11b47768b062c4f350bd
   S3/objects/nInput_S3Init.js: 33cbd0b1c12f01e3d95b69a74e5257424474d652
   Unix/inputs.disabled/12.filehandles.yaml: 648575b097f644c51cf4801d1a3f27100aa5e65c
+  nAttrMon/objects.meta/nInput_nAttrMon.yaml: 93bd86517a9db7916200248f3ab173a36b781887
   nAttrMon/objects/nInput_nAttrMon.js: c8ec9f45f724e7372b02751b893178490587641b
-  utils/createConfig.yaml: 0ebe179909750bc9e4ab6a25d009d9abda375dc8
+  utils/createConfig.yaml: 4f1beaccd2db5f056087fec029a5fdc2e7bcc2fd
   utils/decomposeKibanaExport.yaml: d0265118651c9ae2467cbb28dc152f25bc0beb8d

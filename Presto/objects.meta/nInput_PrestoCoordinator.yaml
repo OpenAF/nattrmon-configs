@@ -1,0 +1,30 @@
+kind: input
+constructor: nInput_PrestoCoordinator
+title: Presto coordinator statistics
+description: Collects status, cluster, query, CPU, and memory statistics from a Presto or Trino coordinator.
+examples:
+  - Presto/inputs.disabled/01.presto.coordinator.yaml
+arguments:
+  - name: url
+    type: string
+    required: true
+    description: Presto or Trino coordinator base URL.
+    example: http://presto:8080
+  - name: user
+    type: string
+    description: User for direct coordinator authentication.
+    example: "$PRESTO_USER"
+  - name: pass
+    type: string
+    secret: true
+    description: Password for direct coordinator authentication.
+    example: "$PRESTO_PASSWORD"
+  - name: chKeys
+    type: string
+    description: Channel containing coordinator connection records; use instead of direct URL settings.
+    example: prestoCoordinators
+  - name: attrTemplate
+    type: string
+    default: Presto/Coordinator stats
+    description: Attribute name template for coordinator data.
+    example: Presto/Coordinator stats

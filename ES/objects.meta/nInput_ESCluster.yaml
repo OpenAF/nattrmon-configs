@@ -1,0 +1,29 @@
+kind: input
+constructor: nInput_ESCluster
+title: ElasticSearch cluster health
+description: Collects cluster-health, node, storage, memory, and shard statistics from ElasticSearch or OpenSearch.
+examples:
+  - ES/inputs.disabled/01.es.status.yaml
+arguments:
+  - name: chKeys
+    type: string
+    description: Channel containing ElasticSearch connection records created by nInput_ESInit.
+    example: eskeys
+  - name: url
+    type: string
+    description: ElasticSearch base URL when chKeys is not used.
+    example: https://elasticsearch.example:9200
+  - name: user
+    type: string
+    description: User for direct ElasticSearch authentication.
+    example: "$ES_USER"
+  - name: pass
+    type: string
+    secret: true
+    description: Password for direct ElasticSearch authentication.
+    example: "$ES_PASSWORD"
+  - name: attrTemplate
+    type: string
+    default: ElasticSearch/Cluster health
+    description: Attribute name template for the collected cluster data.
+    example: ElasticSearch/Cluster health

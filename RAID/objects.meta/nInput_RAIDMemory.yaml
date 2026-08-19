@@ -1,0 +1,29 @@
+kind: input
+constructor: nInput_RAIDMemory
+title: RAID memory status
+description: Collects JVM heap memory status from RAID servers through OpenCli or an initialized cache.
+examples:
+  - RAID/inputs.disabled/09.raidmemory.yaml
+arguments:
+  - name: keys
+    type: string | array<string>
+    description: RAID server object key or keys; omit when chKeys is used.
+    example: raid-server-1
+  - name: chKeys
+    type: string
+    description: Channel containing RAID server object keys.
+    example: raidServers
+  - name: useCache
+    type: string
+    description: Cache name created by an initialization input, used instead of live calls.
+    example: raidCache
+  - name: attrTemplate
+    type: string
+    default: Server status/Memory
+    description: Attribute name template for memory status.
+    example: Server status/Memory
+  - name: extraMemoryDetails
+    type: boolean
+    default: false
+    description: Request detailed JVM memory information.
+    example: true

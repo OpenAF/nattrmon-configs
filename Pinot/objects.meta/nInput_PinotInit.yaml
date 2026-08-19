@@ -1,0 +1,10 @@
+kind: input
+constructor: nInput_PinotInit
+title: PinotInit
+description: Configuration metadata for nInput_PinotInit.
+examples: []
+arguments:
+  - name: options
+    type: any
+    description: Configuration option read by nInput_PinotInit.
+    example: {}

@@ -14,3 +14,5 @@ Configuration packages for nAttrMon (nattrmon.io)
 | RAID | A series of inputs for the RAID platform previously bundled in nAttrMon |
 | S3 | Input plugs for AWS S3 compatible object storage (nAttrMon bundles some outputs with capabilities to output to S3) |
 | Unix | At this time has input examples for use in Unix systems |
+
+Every object constructor in the listed configuration families has companion argument metadata in `objects.meta/`. See [Object metadata](OBJECTS-METADATA.md) for the format, credential handling, query annotations, and how metadata is copied into an nAttrMon configuration.

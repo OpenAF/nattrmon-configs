@@ -1,0 +1,23 @@
+kind: input
+constructor: nInput_Licence
+title: Licence
+description: Configuration metadata for nInput_Licence.
+examples:
+  - ../nattrmon-configs/RAID/inputs.disabled/10.licence.yaml
+arguments:
+  - name: attrTemplate
+    type: any
+    description: Configuration option read by nInput_Licence.
+    example: Category/Name
+  - name: chKeys
+    type: any
+    description: Configuration option read by nInput_Licence.
+    example: nattrmon::keys
+  - name: extra
+    type: any
+    description: Configuration option read by nInput_Licence.
+    example: {}
+  - name: keys
+    type: any
+    description: Configuration option read by nInput_Licence.
+    example: [example-key]

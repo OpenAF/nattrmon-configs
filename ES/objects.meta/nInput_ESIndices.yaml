@@ -1,0 +1,40 @@
+kind: input
+constructor: nInput_ESIndices
+title: ESIndices
+description: Configuration metadata for nInput_ESIndices.
+examples:
+  - ../nattrmon-configs/ES/inputs.disabled/02.es.indices.yaml
+arguments:
+  - name: attrTemplate
+    type: any
+    description: Configuration option read by nInput_ESIndices.
+    example: Category/Name
+  - name: chKeys
+    type: any
+    description: Configuration option read by nInput_ESIndices.
+    example: nattrmon::keys
+  - name: indexPrefixes
+    type: any
+    description: Configuration option read by nInput_ESIndices.
+    example: {}
+  - name: key
+    type: any
+    description: Configuration option read by nInput_ESIndices.
+    example: {}
+  - name: keys
+    type: any
+    description: Configuration option read by nInput_ESIndices.
+    example: [example-key]
+  - name: pass
+    type: any
+    secret: true
+    description: Configuration option read by nInput_ESIndices.
+    example: "$SECRET"
+  - name: url
+    type: any
+    description: Configuration option read by nInput_ESIndices.
+    example: {}
+  - name: user
+    type: any
+    description: Configuration option read by nInput_ESIndices.
+    example: {}

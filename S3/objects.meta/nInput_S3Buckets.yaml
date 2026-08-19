@@ -1,0 +1,38 @@
+kind: input
+constructor: nInput_S3Buckets
+title: S3 bucket statistics
+description: Collects per-storage-class object count, size, and age statistics from S3-compatible buckets.
+examples:
+  - S3/inputs.disabled/01.s3.buckets.yaml
+arguments:
+  - name: chKeys
+    type: string
+    description: Channel containing S3 connection and bucket records created by nInput_S3Init.
+    example: s3Services
+  - name: useCache
+    type: string
+    description: S3 cache name created by nInput_S3Init.
+    example: s3Cache
+  - name: bucket
+    type: string
+    description: Bucket name when using a direct connection record.
+    example: monitoring-data
+  - name: prefix
+    type: string
+    default: ""
+    description: Optional object-key prefix to collect.
+    example: reports/
+  - name: recursive
+    type: boolean
+    default: false
+    description: Traverse object-key prefixes recursively.
+    example: true
+  - name: pattern
+    type: string
+    description: Optional regular expression that filters object paths.
+    example: ".*\\.json$"
+  - name: attrTemplate
+    type: string
+    default: Object Storage/Buckets
+    description: Attribute name template for bucket statistics.
+    example: Object Storage/Buckets

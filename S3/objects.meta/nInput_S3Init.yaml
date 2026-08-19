@@ -1,0 +1,11 @@
+kind: input
+constructor: nInput_S3Init
+title: S3Init
+description: Configuration metadata for nInput_S3Init.
+examples:
+  - ../nattrmon-configs/S3/inputs.disabled/00.init.s3.yaml
+arguments:
+  - name: options
+    type: any
+    description: Configuration option read by nInput_S3Init.
+    example: {}

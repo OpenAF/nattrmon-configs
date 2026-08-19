@@ -1,0 +1,15 @@
+kind: input
+constructor: nInput_ListenerHTTP
+title: ListenerHTTP
+description: Configuration metadata for nInput_ListenerHTTP.
+examples:
+  - ../nattrmon-configs/RAID/inputs.disabled/05.listenerhttp.yaml
+arguments:
+  - name: attrTemplate
+    type: any
+    description: Configuration option read by nInput_ListenerHTTP.
+    example: Category/Name
+  - name: chKeys
+    type: any
+    description: Configuration option read by nInput_ListenerHTTP.
+    example: nattrmon::keys

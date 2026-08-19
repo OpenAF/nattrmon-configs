@@ -1,0 +1,20 @@
+kind: input
+constructor: nInput_PinotMetrics
+title: Pinot controller metrics
+description: Retrieves and normalizes OpenMetrics data from an Apache Pinot controller.
+examples: []
+arguments:
+  - name: url
+    type: string
+    required: true
+    description: Pinot controller base URL.
+    example: http://pinot-controller:9000
+  - name: chKeys
+    type: string
+    description: Channel containing Pinot connection records; use instead of direct URL settings.
+    example: pinotControllers
+  - name: attrTemplate
+    type: string
+    default: Pinot/Controller stats
+    description: Attribute name template for normalized metric records.
+    example: Pinot/Controller stats

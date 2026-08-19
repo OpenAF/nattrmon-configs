@@ -1,0 +1,43 @@
+kind: input
+constructor: nInput_MinIOMetrics
+title: MinIOMetrics
+description: Configuration metadata for nInput_MinIOMetrics.
+examples:
+  - ../nattrmon-configs/S3/inputs.disabled/05.minio.metrics.yaml
+arguments:
+  - name: all
+    type: any
+    description: Configuration option read by nInput_MinIOMetrics.
+    example: {}
+  - name: attrTemplate
+    type: any
+    description: Configuration option read by nInput_MinIOMetrics.
+    example: Category/Name
+  - name: bearerToken
+    type: any
+    description: Configuration option read by nInput_MinIOMetrics.
+    example: {}
+  - name: bucket
+    type: any
+    description: Configuration option read by nInput_MinIOMetrics.
+    example: {}
+  - name: chKeys
+    type: any
+    description: Configuration option read by nInput_MinIOMetrics.
+    example: nattrmon::keys
+  - name: key
+    type: any
+    description: Configuration option read by nInput_MinIOMetrics.
+    example: {}
+  - name: keys
+    type: any
+    description: Configuration option read by nInput_MinIOMetrics.
+    example: [example-key]
+  - name: metricsPath
+    type: any
+    description: Configuration option read by nInput_MinIOMetrics.
+    example: {}
+  - name: url
+    type: any
+    description: Configuration option read by nInput_MinIOMetrics.
+    example: {}

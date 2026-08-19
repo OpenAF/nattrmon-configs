@@ -1,0 +1,19 @@
+kind: input
+constructor: nInput_DBConnections
+title: DBConnections
+description: Configuration metadata for nInput_DBConnections.
+examples:
+  - ../nattrmon-configs/RAID/inputs.disabled/15.dbconnections.yaml
+arguments:
+  - name: attrTemplate
+    type: any
+    description: Configuration option read by nInput_DBConnections.
+    example: Category/Name
+  - name: chKeys
+    type: any
+    description: Configuration option read by nInput_DBConnections.
+    example: nattrmon::keys
+  - name: useCache
+    type: any
+    description: Configuration option read by nInput_DBConnections.
+    example: {}

@@ -1,0 +1,11 @@
+kind: input
+constructor: nInput_ESInit
+title: ESInit
+description: Configuration metadata for nInput_ESInit.
+examples:
+  - ../nattrmon-configs/ES/inputs.disabled/00.init.es.yaml
+arguments:
+  - name: options
+    type: any
+    description: Configuration option read by nInput_ESInit.
+    example: {}
