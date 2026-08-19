@@ -25,6 +25,7 @@ dependencies:
   openaf: '>=20231222'
 files:
 - .package.yaml
+- AGENTS.md
 - ES/inputs.disabled/00.init.es.yaml
 - ES/inputs.disabled/01.es.status.yaml
 - ES/inputs.disabled/02.es.indices.yaml
@@ -137,6 +138,7 @@ files:
 - utils/createConfig.yaml
 - utils/decomposeKibanaExport.yaml
 filesHash:
+  AGENTS.md: c26be08467a7d89fcec8a3c5938d47c0afb835d9
   ES/inputs.disabled/00.init.es.yaml: d0d9b4009a92573ee30e4d01fa4388ebf736ae16
   ES/inputs.disabled/01.es.status.yaml: 3f92c2cdc50ed9bb279e4679cb2ebb1ba05f6d84
   ES/inputs.disabled/02.es.indices.yaml: 45679210b3b51c1a7de0588ca528f023613dccc3
@@ -246,5 +248,5 @@ filesHash:
   Unix/inputs.disabled/12.filehandles.yaml: 648575b097f644c51cf4801d1a3f27100aa5e65c
   nAttrMon/objects.meta/nInput_nAttrMon.yaml: 93bd86517a9db7916200248f3ab173a36b781887
   nAttrMon/objects/nInput_nAttrMon.js: c8ec9f45f724e7372b02751b893178490587641b
-  utils/createConfig.yaml: 4f1beaccd2db5f056087fec029a5fdc2e7bcc2fd
+  utils/createConfig.yaml: 0ebe179909750bc9e4ab6a25d009d9abda375dc8
   utils/decomposeKibanaExport.yaml: d0265118651c9ae2467cbb28dc152f25bc0beb8d
